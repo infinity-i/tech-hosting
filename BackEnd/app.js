@@ -9,6 +9,7 @@ const app = new express;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 //middleware
+// command line added for the test purpose(as12)
 app.use(bodyparser.json());
 app.use(cors());
 
