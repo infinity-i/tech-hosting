@@ -27,7 +27,7 @@ export let fadeZ = trigger('fadeZ', [
 
     state('void', style({opacity:0,transform: 'translateY(80px)'})),
     transition(':enter', [ //void <=> *
-      animate('1s 1000ms ease-out')
+      animate('1s 600ms ease-out')
     ])
   ])
 
