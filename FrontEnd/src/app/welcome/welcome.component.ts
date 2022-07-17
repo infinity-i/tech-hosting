@@ -6,7 +6,7 @@ import { downA, fadeL, fadeR, fadeZ } from '../animations';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css'],
   animations: [
-    fadeR , fadeL , fadeZ , downA
+    fadeR , fadeL , fadeZ , downA 
 
   ]
 })
