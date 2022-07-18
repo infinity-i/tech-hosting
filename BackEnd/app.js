@@ -1,6 +1,6 @@
 require('./config/config');
-const userModel = require('./src/model/UserModel')
-
+const userModel = require('./src/model/UserModel');
+const postModel = require('./src/model/PostModel');
 const express= require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
@@ -11,12 +11,16 @@ const app = new express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-//middleware
-//app.use(bodyparser.json());
-//app.use(bodyparser.urlencoded({ extended: false }))
 app.use(cors());
 
+//For test purpose
+app.get('/', (req, res) => {
+    res.send({
+      status: 'online'
+    })
+});
 
+//Register API
 app.post('/register', async(req,res) => {
     try {
         const password= req.body.password;
@@ -26,14 +30,12 @@ app.post('/register', async(req,res) => {
                 fullName : req.body.fullName,
                 email : req.body.email,
                 password : req.body.password,
+                phoneNo: req.body.phoneNo,
                 repeatPassword : req.body.repeatPassword,
                 userType : req.body.userType
             })
-            //password hashing
-
-            const user= await userdata.save();
-            res.status(201);
-            //.render("login")
+        const user= await userdata.save();
+        res.status(201);
         }else{
             res.send("Password not matching");
         }
@@ -42,14 +44,15 @@ app.post('/register', async(req,res) => {
     }
 })
 
+//Login API
 app.post('/login', async(req,res) => {
     try{
         const email = req.body.email;
         const password = req.body.password;
-        const useremail = await userModel.findOne({email:email});
-        if (useremail.password === password){
+        const user = await userModel.findOne({email:email});
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch){
             res.status(201);
-            //.render the homepage
             console.log("key value matches");
         }else {
             res.send("Invalid credentials");
@@ -60,8 +63,52 @@ app.post('/login', async(req,res) => {
 })
 
 
+//create post
+app.post('/posts/savepost', function(req,res){
+   console.log(req.body);
+   const post = {       
+        title : req.body.title,
+        content : req.body.content,
+        username : req.body.username,
+   }       
+   const newpost = new postModel(post);
+   newpost.save();
+});
+
+//Posts pending approval in admin page
+app.get('/admin/pending', function(req,res){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+    postModel.find({approved:false})
+    .then(function(post){
+        console.log('All Approved Posts displayed');
+        res.send(post);
+    })
+})
+
+//To display all posts that are approved in home page
+app.get('/posts', function(req,res){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+    postModel.find({approved:true})
+    .then(function(post){
+        console.log('All Approved Posts displayed');
+        res.send(post);
+    })
+})
+
+//To change approved value on approval by admin
+app.get('/admin/approve', function(req,res){
+    console.log(req.body.title)
+    // id=req.body._id,
+    // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
+    //         .then(function(){
+    //             res.send();
+    //         })
+})
 
 
+//Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
 })
