@@ -11,7 +11,7 @@ export let fadeR = trigger('fadeR', [
 
     state('void', style({opacity:0})),
     transition(':enter', [ //void <=> *
-      animate('1s 300ms ease-out')
+      animate('1.5s 1500ms ease-out')
     ])
   ])
 
