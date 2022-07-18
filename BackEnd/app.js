@@ -97,15 +97,15 @@ app.get('/posts', function(req,res){
     })
 })
 
-//To change approved value on approval by admin
-app.get('/admin/approve', function(req,res){
-    console.log(req.body.title)
-    // id=req.body._id,
-    // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
-    //         .then(function(){
-    //             res.send();
-    //         })
-})
+// //To change approved value on approval by admin
+// app.get('/admin/approve', function(req,res){
+//     console.log(req.body.title)
+//     // id=req.body._id,
+//     // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
+//     //         .then(function(){
+//     //             res.send();
+//     //         })
+// })
 
 
 //Port setup

@@ -1,33 +1,38 @@
 <body>
     <div class="center">
       <h1>Signup</h1>
-      <form method="post">
+      <form [formGroup]="form" (ngSubmit)="onSignup(form.value)">
         <div class="txt_field">
-          <input type="text" required>
+          <input type="text" required class="form-control" formControlName="fullName">
           <span></span>
           <label>Full Name</label>
         </div>
         <div class="txt_field">
-            <input type="text" required>
+            <input type="text" required class="form-control" formControlName="email">
             <span></span>
             <label>Email</label>
           </div>
           <div class="txt_field">
-            <input type="text" required>
+            <input type="text" required class="form-control" formControlName="phoneNo">
             <span></span>
             <label>Phone no</label>
           </div>
         <div class="txt_field">
-          <input type="password" required>
+          <input type="password" required class="form-control" formControlName="password">
           <span></span>
           <label>Password</label><br>
         </div>
         <div class="txt_field">
-            <input type="password" required>
+            <input type="password" required class="form-control" formControlName="repeatPassword"> 
             <span></span>
             <label>Confirm Password</label><br>
           </div>
-          <input type="submit" value="Signup">
+          <div class="txt_field">
+            <input type="text" required class="form-control" formControlName="userType">
+            <span></span>
+            <label>You are a.....</label><br>
+          </div>
+          <input type="submit" value="Signup" (click)="signup()>
       </form>
     </div>
   </body>

@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit{
 
-  constructor() { }
+  form:FormGroup | undefined;
 
-  ngOnInit(): void {
-  }
+  constructor(private userservice:UserService,private router:Router) { }
 
+  ngOnInit(){
+
+}
 }
