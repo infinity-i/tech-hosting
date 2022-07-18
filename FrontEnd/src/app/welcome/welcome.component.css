@@ -165,23 +165,51 @@ h2{
 .sec2txt p{
     font-size: 17.5px;
 }
-.img2{
+/* .img2{ */
+    /* width: 900px;
+    height: auto;
+    float: right;
+    margin-top: -290px;
+    margin-right: -145px; */
+    /* overflow: hidden; */
+   
+/* } */
+#sec2img1{
+    position: relative;
+    /* width: 100%; */
+    /* height: 100%; */
+    top: 0;
+    left: 0;
     width: 900px;
     height: auto;
     float: right;
     margin-top: -290px;
     margin-right: -145px;
-    /* display: grid; */
-    /* place-items:right; */
-    /* text-align: right; */
-    /* border: 2px solid red; */
-}
-#sec2img1{
-    width: 100%;
-    height: 100%;
 
 }
 
+.img3{
+    width: 700px;
+    height: 700px;
+    /* border: 1px solid red; */
+    margin-left: 930px;
+    margin-top: -110px;
+    position: relative;
+}
+#sec2img2{
+    width: 700px;
+    height: auto;
+    position: absolute;
+    /* top: 1050px; */
+    /* left: 930px; */
+    /* width: 800px; */
+    left: 0;
+    right: 0;
+    /* margin-left: 700px; */
+    float: right;
+    /* overflow-y: hidden; */
+
+}
 /* ----------------------------------------- */
 /* .fishes
 {
