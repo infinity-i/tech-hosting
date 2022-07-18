@@ -112,3 +112,12 @@ input[type="submit"]:hover{
 .signup_link a:hover{
   text-decoration: underline;
 }
+
+.login_link a{
+  color: #2691b9;
+  text-decoration: none;
+}
+
+.login_link{
+  margin-left: 100px;
+}
