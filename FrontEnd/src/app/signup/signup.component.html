@@ -1,33 +1,42 @@
 <body>
-    <div class="center">
-      <h1>Signup</h1>
-      <form method="post">
-        <div class="txt_field">
-          <input type="text" required>
+  <div class="center">
+    <h1>Signup</h1>
+    <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()">
+      <div class="txt_field">
+        <input type="text" name="fullname" #fullname="ngModel" [(ngModel)]="user.fullname" required>
+        <span></span>
+        <label>Full Name</label>
+        <label class="text-danger" *ngIf="form.submitted&&fullname.errors?.['required']">Full Name required</label>
+      </div>
+      
+      <div class="txt_field">
+          <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
           <span></span>
-          <label>Full Name</label>
+          <label>Email</label>
+          <label class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">Email required</label>
+          <!-- <label class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">Invalid Email Id</label> -->
         </div>
+        
         <div class="txt_field">
-            <input type="text" required>
-            <span></span>
-            <label>Email</label>
-          </div>
-          <div class="txt_field">
-            <input type="text" required>
-            <span></span>
-            <label>Phone no</label>
-          </div>
-        <div class="txt_field">
-          <input type="password" required>
+          <input type="number" name="phone" #phone="ngModel" [(ngModel)]="user.phone" pattern="^((\\+91-?)|0)?[0-9]{10}$"  required>
           <span></span>
-          <label>Password</label><br>
+          <label>Phone number</label>
+          <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['required']">Phone number required</label>
+        <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
         </div>
-        <div class="txt_field">
-            <input type="password" required>
-            <span></span>
-            <label>Confirm Password</label><br>
-          </div>
-          <input type="submit" value="Signup">
-      </form>
-    </div>
-  </body>
+        
+      <div class="txt_field">
+        <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+        <span></span>
+        <label>Password</label><br>
+        <label class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">Password required</label>
+      </div>
+      <div class="txt_field">
+          <input type="password" formControlName="confirmpassword" required>
+          <span></span>
+          <label>Confirm Password</label><br>
+        </div>
+        <input type="submit" value="Signup">
+    </form>
+  </div>
+</body>
