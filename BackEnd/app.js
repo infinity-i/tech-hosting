@@ -107,7 +107,6 @@ app.get('/posts', function(req,res){
 //     //         })
 // })
 
-
 //Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
