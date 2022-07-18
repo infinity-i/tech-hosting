@@ -4,7 +4,7 @@
 
     <div class="section1">
         <header @fadeZ>
-            <p >ICTK</p>
+            <p >ICTAK</p>
             <a routerLink="signup"><h6>SIGN UP</h6></a>
         </header>
     
@@ -35,7 +35,7 @@
             <img src="https://blogger.googleusercontent.com/img/b/U2hvZWJveA/AVvXsEhnuGlBA9tyNRHqAquiFF2wDdz3bCI9KAWyEZssNus8av4wwPso-clZ1aBY5QC64nsZwWOwH6ufJ8WCYMLazqCvJxdUeJKzUJuWFaVnAFEiHesS5t0Zl2bAjmw1TFtvPJ856dwlpBPHsSk4MPvzix3ZNPyGLffAUuew/w512" alt="">
         </div>
         
-            <div class="sec2txt">
+            <div @fadeR class="sec2txt">
                 <h2>Choose the perfect design</h2> <br>
                 <p>Create a beautiful blog that fits your style. Choose from a selection <br> of easy-to-use templates – all with flexible layouts and hundreds of <br> background images – or design something new.</p>
             </div>
@@ -43,9 +43,34 @@
                 <img id="sec2img1" src="../../assets/images/sec2img2.png" alt="">
             </div>
 
+            <div class="img3" @imgani1>
+                <img  id="sec2img2" src="../../assets/images/sec2img1.png" alt="">
+            </div>
+
 
 
     </div>
+
+    <div class="section3">
+        <div class="imgpart">
+            <img  @letter1 class="img31" src="../../assets/images/letter1.png" alt="">
+            <img  @letter2 class="img33" src="../../assets/images/letter4.png" alt="">
+            <img  @letter3 class="img32" src="../../assets/images/letter2.png" alt="">
+            <img  @letter4 class="img34" src="../../assets/images/letter3.png" alt="">
+        </div>
+
+        <div @fadeR class="sec3txt">
+            <h2>Choose the perfect design</h2> <br>
+            <p>Create a beautiful blog that fits your style. Choose from a selection <br> 
+            of easy-to-use templates – 
+            all with flexible layouts and hundreds of <br> background images – or
+            design something new.</p>
+
+        </div>
+
+    </div>
     <!-- Ending of the welcome page section 1 -->
+
+    <app-footer></app-footer>
     
 </div>
