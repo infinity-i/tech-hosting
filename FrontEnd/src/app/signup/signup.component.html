@@ -24,6 +24,14 @@
           <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['required']">Phone number required</label>
         <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
         </div>
+
+        <div>
+          <label for="user">I'am a:</label>
+         <select id="user">
+          <option value="student">Student</option>
+          <option value="trainer">Trainer</option>
+         </select>
+        </div>
         
       <div class="txt_field">
         <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
@@ -38,7 +46,7 @@
         </div>
         <input type="submit" value="Signup"><br><br>
         <div class="login_link">
-         <p>Already a member? <a href="">Login</a></p>
+         <p>Already a member? <a routerLink="/login">Login</a></p>
         </div>
     </form>
   </div>
