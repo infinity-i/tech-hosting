@@ -1,6 +1,7 @@
 require('./config/config');
 const userModel = require('./src/model/UserModel');
 const postModel = require('./src/model/PostModel');
+const categoryModel = require('./src/model/CategoryModel');
 const express= require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
@@ -107,8 +108,22 @@ app.get('/admin/approve', function(req,res){
     //         })
 })
 
+//Add categories 
+app.post('/categories', async(req,res) => {
+    const newcategory = new categoryModel(req.body);
+    try{
+        const savedcategory = await newcategory.save();
+        res.status(200).json(savedcategory);
+    }catch(err) {
+        res.status(500).json(err);
+    }
+} );
+
+
 
 //Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
 })
+
+
