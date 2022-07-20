@@ -1,6 +1,7 @@
 require('./config/config');
 const userModel = require('./src/model/UserModel');
 const postModel = require('./src/model/PostModel');
+const categoryModel = require('./src/model/CategoryModel');
 const express= require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
@@ -97,6 +98,7 @@ app.get('/posts', function(req,res){
     })
 })
 
+<<<<<<< HEAD
 // //To change approved value on approval by admin
 // app.get('/admin/approve', function(req,res){
 //     console.log(req.body.title)
@@ -106,8 +108,34 @@ app.get('/posts', function(req,res){
 //     //             res.send();
 //     //         })
 // })
+=======
+//To change approved value on approval by admin
+app.get('/admin/approve', function(req,res){
+    console.log(req.body.title)
+    // id=req.body._id,
+    // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
+    //         .then(function(){
+    //             res.send();
+    //         })
+})
+
+//Add categories 
+app.post('/categories', async(req,res) => {
+    const newcategory = new categoryModel(req.body);
+    try{
+        const savedcategory = await newcategory.save();
+        res.status(200).json(savedcategory);
+    }catch(err) {
+        res.status(500).json(err);
+    }
+} );
+
+
+>>>>>>> master
 
 //Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
 })
+
+
