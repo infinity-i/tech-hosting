@@ -8,14 +8,14 @@
             <!-- <p>⌣</p> -->
         </div>
         
-            <button routerLink="/books"  class="btn btn-light"  data-mdb-ripple-color="dark">Blogs</button>
+            <button   class="btn btn-light"  data-mdb-ripple-color="dark">Blogs</button>
             
-            <button routerLink="/add"  class="btn btn-light"  data-mdb-ripple-color="dark">Add Blog</button>
+            <button   class="btn btn-light" routerLink="addblog" data-mdb-ripple-color="dark">Add Blog</button>
 
             <!-- <a *ngIf= "_auth.loggedIn()" (clcik)= "logoutUser()" >LogOut</a> -->
             <!-- <button *ngIf="_auth.loggedIn()" (click)="logoutUser()" class="btn btn-light"  data-mdb-ripple-color="dark">Logout</button> -->
-
-
-
+    </div>
+    <div class="router">
+        <router-outlet></router-outlet>
     </div>
 </header>
