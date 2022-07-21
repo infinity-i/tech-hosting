@@ -3,10 +3,10 @@
     <h1>Signup</h1>
     <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()">
       <div class="txt_field">
-        <input type="text" name="fullname" #fullname="ngModel" [(ngModel)]="user.fullname" required>
+        <input type="text" name="fullName" #fullName="ngModel" [(ngModel)]="user.fullName" required>
         <span></span>
         <label>Full Name</label>
-        <label class="text-danger" *ngIf="form.submitted&&fullname.errors?.['required']">Full Name required</label>
+        <label class="text-danger" *ngIf="form.submitted&&fullName.errors?.['required']">Full Name required</label>
       </div>
       
       <div class="txt_field">
@@ -18,10 +18,10 @@
         </div>
         
         <div class="txt_field">
-          <input type="number" name="phone" #phone="ngModel" [(ngModel)]="user.phone" pattern="^((\\+91-?)|0)?[0-9]{10}$"  required>
+          <input type="number" name="phoneNo" #phoneNo="ngModel" [(ngModel)]="user.phoneNo" pattern="^((\\+91-?)|0)?[0-9]{10}$"  required>
           <span></span>
           <label>Phone number</label>
-          <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['required']">Phone number required</label>
+          <label class="text-danger" *ngIf="form.submitted&&phoneNo.errors?.['required']">Phone number required</label>
         <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
         </div>
 
@@ -40,7 +40,7 @@
         <label class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">Password required</label>
       </div>
       <div class="txt_field">
-          <input type="password" formControlName="confirmpassword" required>
+          <input type="password" formControlName="repeatPassword" required>
           <span></span>
           <label>Confirm Password</label><br>
         </div>

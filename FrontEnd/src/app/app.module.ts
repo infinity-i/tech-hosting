@@ -23,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
