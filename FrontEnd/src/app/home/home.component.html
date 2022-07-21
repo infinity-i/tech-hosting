@@ -16,7 +16,7 @@
         <!-- <router-outlet></router-outlet> -->
         <button class="btn btn-clasic menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars"></i></button>
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+<div class="offcanvas offcanvas-start out" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop </h5>
     <button type="button" class="btn-close close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -26,8 +26,8 @@
     <!-- <button   class="btn btn-light" routerLink="addblog" data-mdb-ripple-color="dark">Add Blog</button> -->
     <div  class="links">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a routerLink="addblog" data-bs-dismiss="offcanvas">Create Blog</a></li>
+            <li><a data-bs-dismiss="offcanvas" routerLink="blogs" >Home</a></li>
+            <li><a data-bs-dismiss="offcanvas" routerLink="addblog" >Create Blog</a></li>
             <li><a href="">My Blog</a></li>
             <li><a href="">Profile</a></li>
 

@@ -38,3 +38,8 @@
     /* margin-bottom: 10px; */
 }
 
+.out{
+    /* transform: scaleX(-180px); */
+    transition:ease-out .3s;
+}
+
