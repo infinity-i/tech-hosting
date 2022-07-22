@@ -1,6 +1,6 @@
 <div class="body">
     <div class='card'>
-      <form id="Form"  ngNativeValidate >
+      <form id="Form" (ngSubmit)="AddBlog()" ngNativeValidate >
         <div class='card-header' style="font-size:20px;">
           ADD BLOG
         </div>
@@ -28,7 +28,7 @@
                       <tr>
                         <td></td>
                                        
-                        <td><button id="Form" type="submit" class="btn btn-success" style="margin-right:30px ;">Submit</button> 
+                        <td><button id="Form" type="submit" class="btn btn-success" style="margin-right:30px ;" >Submit</button> 
                           <button routerLink="/books"  type="button" class="btn btn-danger">Cancel</button>  </td>  
                        <!-- <td><input type="submit" value="button" /></td>                   -->
                       </tr>  
