@@ -11,11 +11,12 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 });
 
 const userSchema = new mongoose.Schema({
-    fullName: { type: String,required:true },
-    email: { type: String,required:true, unique: true},
-    password: { type: String, required:true },
-    repeatPassword: { type: String, required:true },
-    userType: { type: String,required:true }
+    fullName: { type: String,required:false },
+    email: { type: String,required:false, unique: true},
+    phoneNo: {type: String, required:false},
+    password: { type: String, required:false },
+    repeatPassword: { type: String, required:false },
+    //userType: { type: String,required:true }
 });
 
 userSchema.pre("save", async function(next) {

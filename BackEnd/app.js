@@ -13,6 +13,7 @@ const app = new express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 //For test purpose
 app.get('/', (req, res) => {
@@ -30,10 +31,10 @@ app.post('/register', async(req,res) => {
             const userdata = new userModel({
                 fullName : req.body.fullName,
                 email : req.body.email,
-                password : req.body.password,
                 phoneNo: req.body.phoneNo,
-                repeatPassword : req.body.repeatPassword,
-                userType : req.body.userType
+                password : req.body.password,
+                repeatPassword : req.body.repeatPassword
+                //userType : req.body.userType
             })
         const user= await userdata.save();
         res.status(201);
@@ -43,6 +44,22 @@ app.post('/register', async(req,res) => {
     } catch (error) {
         res.status(400).send(error);
     }
+
+    // var user = new userModel(user);
+    //     console.log(user);
+    //     user.save((err,user)=>{
+    //         if(err){
+    //             console.log("error saving user to db");
+    //         }
+    //         else{
+    //             let payload={subject:user._id};
+    //             let token = jwt.sign(payload,'secretKey');
+    //             res.status(200).send({token});
+              
+    //         }
+    //     });
+        
+
 })
 
 //Login API
@@ -61,6 +78,17 @@ app.post('/login', async(req,res) => {
     }catch (error) {
         res.status(400).send("Invalid credentials");
     }
+
+    if (!username) {
+        res.status(401).send('Invalid Username')
+      } 
+      else if ( password !== userData.password) {
+        res.status(401).send('Invalid Password')
+      } else {
+        let payload = {subject: username+password}
+        let token = jwt.sign(payload, 'secretKey')
+        res.status(200).send({token})
+      }
 })
 
 
