@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+
+
 
 
 @Component({
@@ -30,13 +30,13 @@ onlogin() {
     
     this.auth.loginUser(this.loginUserData)
     .subscribe(
-      res => {
+      (      res: { token: string; }) => {
         localStorage.setItem('token', res.token)
-        this.router.navigate(['/'])
+        this.router.navigate(['/home'])
       },
-      err => {
+      (      err: any) => {
         console.log(err);
-        this.router.navigate(['/'])
+        this.router.navigate(['/welcome'])
       });
   }
 }

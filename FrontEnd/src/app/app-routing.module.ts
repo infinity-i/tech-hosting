@@ -22,7 +22,9 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
       path:'blogs',component:BlogsComponent
     },
     {
-      path:'addblog',component:AddBlogComponent
+      path:'addblog',
+      canActivate : [AuthGuard],
+      component:AddBlogComponent
     }
   ]},
   {path:'admin',component:AdminComponent},
