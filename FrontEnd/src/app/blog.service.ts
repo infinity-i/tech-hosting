@@ -9,7 +9,7 @@ export class BlogService {
   constructor(public http:HttpClient) { }
 
   newBlogs(item:any){
-    return this.http.post('http://localhost:3000/insert', { item })
+    return this.http.post('http://localhost:3000/posts/savepost', { item })
     .subscribe((data)=>console.log(data));
   }
 }
