@@ -26,5 +26,11 @@ h4{
     text-align: center;
 }
 
+.button{
+  text-align: right;
+  padding: 50px;
+}
 
-
+.btn-danger{
+  margin-left: 15px;
+}
