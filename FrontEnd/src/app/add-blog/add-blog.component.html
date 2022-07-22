@@ -14,16 +14,16 @@
                       <td><input type="text" name="B_auth"  required></td>                  
                     </tr>    -->
                     <tr>
-                        <td><label>Blog Image</label></td>
-                        <td><input type="text" name="B_img"  required></td>                  
+                        <td><label>Title</label></td>
+                        <td><input type="text" name="B_img" [(ngModel)]="newBlog.title"  required></td>                  
                       </tr>  
                       <tr>
-                        <td><label>Blog Title</label></td>
-                        <td><input type="text" name="B_title"  required></td>                  
+                        <td><label>Username</label></td>
+                        <td><input type="text" name="B_title" [(ngModel)]="newBlog.username"  required></td>                  
                       </tr>  
                       <tr>
                         <td><label >Blog content</label></td>
-                        <td><input type="text" id="desc" name="B_content" class="Isize"  required ></td>                  
+                        <td><input type="text" id="desc" name="B_content" class="Isize" [(ngModel)]="newBlog.content"  required ></td>                  
                       </tr>  
                       <tr>
                         <td></td>
