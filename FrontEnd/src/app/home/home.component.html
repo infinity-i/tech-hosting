@@ -1,0 +1,48 @@
+<!-- <p>home works!</p> -->
+
+<header>
+    <!-- <div class="card-header div">
+        
+        <div class="div2">
+            <h2>{{title}}</h2>
+        </div>
+        
+            <button   class="btn btn-light"  data-mdb-ripple-color="dark">Blogs</button>
+            
+            <button   class="btn btn-light" routerLink="addblog" data-mdb-ripple-color="dark">Add Blog</button>
+
+    </div> -->
+    <div class="router">
+        <!-- <router-outlet></router-outlet> -->
+        <button class="btn btn-primary menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars"></i></button>
+
+<div class="offcanvas offcanvas-start out" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop </h5>
+    <button type="button" class="btn-close close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+    <!-- <button   class="btn btn-light" routerLink="addblog" data-mdb-ripple-color="dark">Add Blog</button> -->
+    <div  class="links">
+        <ul>
+            <li><a data-bs-dismiss="offcanvas" routerLink="blogs" >Home</a></li>
+            <li><a data-bs-dismiss="offcanvas" routerLink="addblog" >Create Blog</a></li>
+            <li><a href="">My Blog</a></li>
+            <li><a href="">Profile</a></li>
+            <li><a href="">Log Out</a></li>
+
+
+        </ul>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+    </div>
+</header>
+    <router-outlet></router-outlet>
+

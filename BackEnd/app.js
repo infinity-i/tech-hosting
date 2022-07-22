@@ -92,9 +92,9 @@ app.post('/login', async(req,res) => {
 app.post('/posts/savepost', function(req,res){
    console.log(req.body);
    const post = {       
-        title : req.body.title,
-        content : req.body.content,
-        username : req.body.username,
+        title : req.body.item.title,
+        content : req.body.item.content,
+        username : req.body.item.username,
    }       
    const newpost = new postModel(post);
    newpost.save();
