@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import {BrowserAnimationsModule} from'@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +17,10 @@ import { HomeComponent } from './home/home.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { NgToastModule} from 'ng-angular-popup'
+import { HeaderComponent } from './header/header.component';
+import { AdminComponent } from './admin/admin.component';
+import { PendingComponent } from './pending/pending.component';
+
 
 @NgModule({
   declarations: [
@@ -25,21 +31,25 @@ import { NgToastModule} from 'ng-angular-popup'
     FooterComponent,
     HomeComponent,
     AddBlogComponent,
+    HeaderComponent,
+    AdminComponent,
+    PendingComponent,
     BlogsComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     NgToastModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserModule
 
     
-  ],
-  providers: [],
+  ],    
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
