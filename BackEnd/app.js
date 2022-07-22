@@ -23,17 +23,18 @@ app.get('/', (req, res) => {
 });
 
 //Register API
-app.post('/register', async(req,res) => {
-    try {
+app.post('/register', async (req,res)=> {
+
+        console.log('reached');
         const password= req.body.password;
         const confpassword= req.body.repeatPassword;
         if(password === confpassword){
             const userdata = new userModel({
-                fullName : req.body.fullName,
-                email : req.body.email,
-                phoneNo: req.body.phoneNo,
-                password : req.body.password,
-                repeatPassword : req.body.repeatPassword
+                fullName : req.body.registerUserData.fullName,
+                email : req.body.registerUserData.email,
+                phoneNo: req.body.registerUserData.phoneNo,
+                password : req.body.registerUserData.password,
+                repeatPassword : req.body.registerUserData.repeatPassword
                 //userType : req.body.userType
             })
         const user= await userdata.save();
@@ -41,9 +42,12 @@ app.post('/register', async(req,res) => {
         }else{
             res.send("Password not matching");
         }
-    } catch (error) {
-        res.status(400).send(error);
-    }
+    // } catch (error) {
+    //     console.log('error catch');
+
+    //     res.status(400).send(error);
+        
+    // }
 
     // var user = new userModel(user);
     //     console.log(user);
@@ -64,32 +68,24 @@ app.post('/register', async(req,res) => {
 
 //Login API
 app.post('/login', async(req,res) => {
-    try{
-        const email = req.body.email;
-        const password = req.body.password;
+
+        const email = req.body.loginUserData.email;
+        const password = req.body.loginUserData.password;
         const user = await userModel.findOne({email:email});
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
-            res.status(201);
+            let payload = {subject: email+password}
+            let token = jwt.sign(payload, 'secretKey')
+            res.status(200).send({token})
             console.log("key value matches");
         }else {
             res.send("Invalid credentials");
         }     
-    }catch (error) {
-        res.status(400).send("Invalid credentials");
-    }
+    });
+    
 
-    if (!username) {
-        res.status(401).send('Invalid Username')
-      } 
-      else if ( password !== userData.password) {
-        res.status(401).send('Invalid Password')
-      } else {
-        let payload = {subject: username+password}
-        let token = jwt.sign(payload, 'secretKey')
-        res.status(200).send({token})
-      }
-})
+
+ 
 
 
 //create post
@@ -152,6 +148,6 @@ app.post('/categories', async(req,res) => {
 //Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
-})
+});
 
 

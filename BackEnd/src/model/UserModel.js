@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", async function(next) {
     if (this.isModified("password")){
         console.log(`${this.password}`);
-        this.password = await bcrypt.hash(this.password,5);       
+        this.password = await bcrypt.hash(this.password,1);       
         console.log(`${this.password}`);
         this.repeatPassword=undefined;
     }

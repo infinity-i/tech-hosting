@@ -10,6 +10,7 @@ import { AuthData } from './auth-data.model';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
   signup(){
     console.log("register button hit");
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   registerUserData = new AuthData('','','','','');
      
   
-  constructor(private auth:AuthService,private router:Router) { }
+  constructor(public auth:AuthService,public router:Router) { }
   
     
     ngOnInit(): void {
