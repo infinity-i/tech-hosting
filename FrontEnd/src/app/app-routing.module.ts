@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [{path:'',component:WelcomeComponent},
   {path:'login',component:LoginComponent},
@@ -21,7 +22,9 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
       path:'blogs',component:BlogsComponent
     },
     {
-      path:'addblog',component:AddBlogComponent
+      path:'addblog',
+      canActivate : [AuthGuard],
+      component:AddBlogComponent
     }
   ]},
   {path:'admin',component:AdminComponent},
