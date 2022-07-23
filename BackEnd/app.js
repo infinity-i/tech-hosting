@@ -8,6 +8,7 @@ const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ("bcryptjs");
 const req = require('express/lib/request');
+const posts = require('./src/model/PostModel');
 const app = new express();
 
 app.use(express.json());
@@ -124,7 +125,11 @@ app.get('/posts', function(req,res){
 
 //To change approved value on approval by admin
 app.get('/admin/approve', function(req,res){
-    console.log(req.body.title)
+    posts.find()
+        .then((blog)=>{
+            res.send(blog);
+        })
+    // console.log(req.body.title)
     // id=req.body._id,
     // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
     //         .then(function(){

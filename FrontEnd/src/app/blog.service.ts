@@ -12,4 +12,8 @@ export class BlogService {
     return this.http.post('http://localhost:3000/posts/savepost', { item })
     .subscribe((data)=>console.log(data));
   }
+
+  getBlogs(){
+    return this.http.get('http://localhost:3000/admin/pending');
+  }
 }
