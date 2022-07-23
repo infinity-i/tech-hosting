@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptorService } from './token-interceptor.service';
 
 import {BrowserAnimationsModule} from'@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { NgToastModule} from 'ng-angular-popup'
 import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { PendingComponent } from './pending/pending.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -49,7 +51,13 @@ import { PendingComponent } from './pending/pending.component';
 
     
   ],    
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [AuthService , AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
