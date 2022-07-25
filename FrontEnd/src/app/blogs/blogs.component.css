@@ -120,7 +120,7 @@
 
 #post1{
     width: 100%;
-    height: 385px;
+    height: 365px;
     display: flex;
     /* border: 1px solid red; */
     background-color: white;
@@ -233,7 +233,7 @@
 
 #post2{
     width: 47.5%;
-    height: 495px;
+    height: 475px;
     /* display: flex; */
     /* border: 1px solid red; */
     background-color: white;
@@ -260,7 +260,7 @@
 }
 
 #post2 .img img{
-    width: auto;
+    width: 100%;
     height: 100%;
     border-radius: 15px 15px 0 0;
 
