@@ -1,7 +1,8 @@
 <body>
   <div class="center">
     <h1>Signup</h1>
-    <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()">
+    <!--
+      <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()">
       <div class="txt_field">
         <input type="text" name="fullName" #fullName="ngModel" [(ngModel)]="user.fullName" required>
         <span></span>
@@ -14,7 +15,7 @@
           <span></span>
           <label>Email</label>
           <label class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">Email required</label>
-          <!-- <label class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">Invalid Email Id</label> -->
+           <label class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">Invalid Email Id</label> 
         </div>
         
         <div class="txt_field">
@@ -22,7 +23,7 @@
           <span></span>
           <label>Phone number</label>
           <label class="text-danger" *ngIf="form.submitted&&phoneNo.errors?.['required']">Phone number required</label>
-        <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
+        <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> 
         </div>
 
         <div>
@@ -45,6 +46,55 @@
           <label>Confirm Password</label><br>
         </div>
         <input type="submit" value="Signup"><br><br>
+        <div class="login_link">
+         <p>Already a member? <a routerLink="/login">Login</a></p>
+        </div>
+    </form>
+    -->
+    <form [formGroup]="signupForm" (ngSubmit)="onsubmit(signupForm.value)">
+      <div class="txt_field">
+        <input type="text" name="fullName" formControlName="name" required>
+        <span></span>
+        <label>Full Name</label>
+        <!--<label class="text-danger" *ngIf="form.submitted&&fullName.errors?.['required']">Full Name required</label>-->
+      </div>
+      
+      <div class="txt_field">
+          <input type="text" name="email" formControlName="email"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+          <span></span>
+          <label>Email</label>
+          <!--<label class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">Email required</label>
+          <label class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">Invalid Email Id</label> -->
+        </div>
+        
+        <div class="txt_field">
+          <input type="number" name="phoneNo" formControlName="phoneNo" pattern="^((\\+91-?)|0)?[0-9]{10}$"  required>
+          <span></span>
+          <label>Phone number</label>
+          <!--<label class="text-danger" *ngIf="form.submitted&&phoneNo.errors?.['required']">Phone number required</label>-->
+        <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
+        </div>
+
+        <div>
+          <label for="user">I'am a:</label>
+         <select id="user">
+          <option value="student" >Student</option>
+          <option value="trainer">Trainer</option>
+         </select>
+        </div>
+        
+      <div class="txt_field">
+        <input type="password" name="password" formControlName="password" required>
+        <span></span>
+        <label>Password</label><br>
+        <!--<label class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">Password required</label>-->
+      </div>
+      <div class="txt_field">
+          <input type="password" formControlName="repeatPassword" required>
+          <span></span>
+          <label>Confirm Password</label><br>
+        </div>
+        <input type="submit" ><br><br>
         <div class="login_link">
          <p>Already a member? <a routerLink="/login">Login</a></p>
         </div>
