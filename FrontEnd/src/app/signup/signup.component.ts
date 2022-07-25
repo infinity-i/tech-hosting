@@ -2,40 +2,47 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthData } from './auth-data.model';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
-  signupForm: FormGroup | any;
-  
-  // user = {
-  //   fullName:'',
-  //   email:'',
-  //   phoneNo:'',
-  //   password:'',
-  //   repeatPassword:''
-  // }
- 
-  constructor(private authservice:AuthService, private router:Router) { }
 
-  ngOnInit(): void{
-    this.signupForm = new FormGroup({
-      fullName:new FormControl (null,Validators.required ),
-      email:new FormControl (null,[Validators.email,Validators.required]),
-      phoneNo:new FormControl (null,Validators.required),
-      userType:new FormControl(null,Validators.required),
-      password: new FormControl (null, Validators.required),
-      repeatPassword: new FormControl(null,Validators.required)
-    })  
-  }
-  onsubmit(signupForm: any){
+export class SignupComponent implements OnInit {
+  signup(){
     console.log("register button hit");
-    this.authservice.CreateUser(this.signupForm.value);
-    alert('User Registration successfull');
-    this.router.navigate(['login']);
+    console.log(this.registerUserData);
+     }
+     
+  registerUserData = new AuthData('','','','','');
+     
+  
+  constructor(public auth:AuthService,public router:Router) { }
+  
+    
+    ngOnInit(): void {
+      
   }
+  onSubmit(){
+    alert("Succesfully registered");
+    this.auth.registerUser(this.registerUserData);
+    console.log("auth service called");
+    // .subscribe(
+    //   (      res: { token: string; }) => {
+    //     console.log(res)
+    //     localStorage.setItem('token', res.token)
+        this.router.navigate(['/login']);
+      
+    //   ( err: any) => console.log(err)
+    // )
+  };
+
+ 
+  
+
+
+  
 }
 
