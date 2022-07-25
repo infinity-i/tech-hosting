@@ -40,6 +40,7 @@ app.post('/register', async (req,res)=> {
             })
         const user= await userdata.save();
         res.status(201);
+        console.log('registration succefull')
         }else{
             res.send("Password not matching");
         }
