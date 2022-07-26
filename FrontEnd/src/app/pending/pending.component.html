@@ -1,19 +1,23 @@
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 <app-header></app-header>
-<div class="col-md-12">
-<div class="bg">
-    <h3 class="title">Pending Blogs</h3>
-    <div class="pages" *ngFor="let i of blogs">
-        <div class="page">
-            <h4 class="bname">{{i.title}}</h4>
-            <p>{{i.content}}</p>
-            <h5>-{{i.username}}</h5>
-            <div class="button">
-                <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
-                <button type="button" class="btn btn-danger">Deny</button>
-               </div>
+
+<div class="jumbotron">
+    <h1 class="title">Pending Blogs</h1>
+  <div id="list" class="container text-center" *ngFor="let i of blogs">
+        <div class="content">
+         <h3 class="bname">{{i.title}}</h3>    
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+         <div class="button">
+            <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
+            <button type="button" class="btn btn-danger">Deny</button>
+           </div>
         </div>
-       
-    </div>
 </div>
 </div>
 
