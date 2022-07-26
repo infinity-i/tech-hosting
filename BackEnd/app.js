@@ -69,7 +69,6 @@ app.post('/register', async (req,res)=> {
 
 //Login API
 app.post('/login', async(req,res) => {
-
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         const user = await userModel.findOne({email:email});
@@ -84,10 +83,6 @@ app.post('/login', async(req,res) => {
         }     
     });
     
-
-
- 
-
 
 //create post
 app.post('/posts/savepost', function(req,res){
