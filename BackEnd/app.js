@@ -23,9 +23,25 @@ app.get('/', (req, res) => {
     })
 });
 
+//JWT Token verify
+function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+      return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token === 'null') {
+      return res.status(401).send('Unauthorized request')    
+    }
+    let payload = jwt.verify(token, 'secretKey')
+    if(!payload) {
+      return res.status(401).send('Unauthorized request')    
+    }
+    req.userId = payload.subject
+    next()
+  }
+
 //Register API
 app.post('/register', async (req,res)=> {
-
         console.log('reached');
         const password= req.body.password;
         const confpassword= req.body.repeatPassword;
@@ -38,39 +54,20 @@ app.post('/register', async (req,res)=> {
                 repeatPassword : req.body.registerUserData.repeatPassword
                 //userType : req.body.userType
             })
-        const user= await userdata.save();
-        res.status(201);
+            const user= await userdata.save();
+            let payload={subject:user._id};
+            let token = jwt.sign(payload,'secretKey');
+            res.status(200).send({token});
         }else{
             res.send("Password not matching");
         }
-    // } catch (error) {
-    //     console.log('error catch');
-
-    //     res.status(400).send(error);
-        
-    // }
-
-    // var user = new userModel(user);
-    //     console.log(user);
-    //     user.save((err,user)=>{
-    //         if(err){
-    //             console.log("error saving user to db");
-    //         }
-    //         else{
-    //             let payload={subject:user._id};
-    //             let token = jwt.sign(payload,'secretKey');
-    //             res.status(200).send({token});
-              
-    //         }
-    //     });
-        
-
 })
 
 //Login API
 app.post('/login', async(req,res) => {
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
+        console.log(req.body);
         const user = await userModel.findOne({email:email});
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){

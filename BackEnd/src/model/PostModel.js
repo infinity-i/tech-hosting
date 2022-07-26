@@ -14,7 +14,8 @@ const postSchema = new mongoose.Schema({
     content: { type: String,required:true},
     username: { type: String, required:true },
     category: { type: String,default: null },
-    approved: { type: String,default: false,required:false }
+    approved: { type: String,default: false,required:false },
+    createdttm: { type: Date, required: true, default: Date.now }
 });
 
 const posts =new  mongoose.model('Post',postSchema);

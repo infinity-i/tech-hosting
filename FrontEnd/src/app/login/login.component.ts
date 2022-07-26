@@ -34,9 +34,9 @@ onlogin() {
         localStorage.setItem('token', res.token)
         this.router.navigate(['/home'])
       },
-      (      err: any) => {
+      (     err: any) => {
         console.log(err);
-        this.router.navigate(['/welcome'])
+        this.router.navigate(['signup'])
       });
   }
 }
