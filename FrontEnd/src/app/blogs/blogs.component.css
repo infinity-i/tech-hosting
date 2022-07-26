@@ -20,6 +20,7 @@
     
 }
 
+
 .navbody{
     display:flex;
 }
@@ -327,6 +328,20 @@
     padding: 0 2%;
     display: flex;
     column-gap: 35px;
+    /* margin-bottom: 20px; */
+    /* padding-bottom: 20px; */
+}
+
+.daytoday1{
+    width: 100%;
+    min-height: 600px;
+    max-height: fit-content;
+    /* border: 1px solid red; */
+    margin-top: -450px;
+    padding: 0 2%;
+    display: flex;
+    column-gap: 35px;
+    margin-top: -255px;
 }
 
 .box{
@@ -336,5 +351,15 @@
     border-radius: 20px;
     background-color: white;
     
+}
+
+/* ################################################################################################################################## */
+
+.events{
+
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    margin-top: -250px;
 }
 
