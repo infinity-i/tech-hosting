@@ -30,3 +30,46 @@
 .ilable{
     margin-left: -100px;
 } */
+
+.body{
+    width: 100%;
+    height: 95vh;
+    background-color: aqua;
+    display: grid;
+    place-items: center;
+}
+
+.addblogC{
+
+    width: 80%;
+    height: 90%;
+    background-color: antiquewhite;
+    display: grid;
+    place-items: center;
+}
+
+.addbody{
+    width: 70%;
+    height: 100%;
+    border: 1px solid rebeccapurple;
+    padding: 20px 0 0 185px ;
+    
+
+}
+
+.addbody input{
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.addbody textarea{
+    width: 70%;
+    height: auto;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}

@@ -1,4 +1,4 @@
-<div class="body">
+<!-- <div class="body">
     <div class='card'>
       <form id="Form" (ngSubmit)="AddBlog()" ngNativeValidate >
         <div class='card-header' style="font-size:20px;">
@@ -9,10 +9,7 @@
             <table class='table'>       
             
               <tbody>  
-                    <!-- <tr>
-                      <td> <label>Book Author</label></td>
-                      <td><input type="text" name="B_auth"  required></td>                  
-                    </tr>    -->
+                
                     <tr>
                         <td><label>Title</label></td>
                         <td><input type="text" name="B_img" [(ngModel)]="newBlog.title"  required></td>                  
@@ -30,7 +27,6 @@
                                        
                         <td><button id="Form" type="submit" class="btn btn-success" style="margin-right:30px ;" >Submit</button> 
                           <button routerLink="/books"  type="button" class="btn btn-danger">Cancel</button>  </td>  
-                       <!-- <td><input type="submit" value="button" /></td>                   -->
                       </tr>  
                       
                       
@@ -39,10 +35,29 @@
           </div>
         </div>
     
-        <!-- <td><button type="submit">Submit</button></td>                   -->
     
       </form>
     </div>
    
+
+  </div> -->
+
+  <div class="body">
+
+    <div class="addblogC">
+
+      <div class="addbody">
+        <label for="title">Blog Title</label><br>
+        <input type="text" name="title" placeholder="write your blog title" id=""><br>
+
+        <label for="title">Author name</label><br>
+        <input type="text" name="title" placeholder="blog author name" id=""><br>
+
+        <label for="title">Blog content</label><br>
+        <!-- <input type="text" name="title" placeholder="write your blog content" id=""><br> -->
+        <textarea name="content" id="" cols="30" rows="10" placeholder="write your blog content"></textarea>
+      </div>
+
+    </div>
 
   </div>
