@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../blog.service';
+import { BlogModel } from '../add-blog/add-blog.model';
 
 
 
@@ -9,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor() { }
+  blogs:BlogModel[] | any;
+
+  constructor(private blogService:BlogService) { }
 
   ngOnInit(): void {
+    this.blogService.getBlogs().subscribe((data) => {
+      this.blogs = JSON.parse(JSON.stringify(data));
+    })
   }
 
 

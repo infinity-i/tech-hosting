@@ -93,19 +93,23 @@
 
   </div>
 
-  <div class="daytoday">
+  <div class="daytoday" *ngFor="let i of blogs">
 
-    <div class="box">
+    <div class="box allblog"   >
+      <img src="../../assets/images/post7.jpg" alt="">
+      <!-- <h2>this should be heading of the blog</h2> -->
+      <h2>{{i.title}}</h2>
 
+      <p>12 jun 2022</p>
     </div>
-
+<!-- 
     <div class="box">
       
     </div>
 
     <div class="box">
       
-    </div>
+    </div> -->
     
 
   </div>
