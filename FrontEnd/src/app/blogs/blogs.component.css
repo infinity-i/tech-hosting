@@ -334,10 +334,13 @@
     /* border: 1px solid red; */
     margin-top: -450px;
     padding: 0 2%;
-    display:block;
+    /* display:block; */
     column-gap: 35px;
     /* margin-bottom: 20px; */
     /* padding-bottom: 20px; */
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .daytoday1{
@@ -360,6 +363,7 @@
     border-radius: 20px;
     background-color: white;
     overflow: hidden;
+    justify-content: space-between;
     cursor: pointer;
     /* display: grid; */
     /* table-layout: calc(); */
