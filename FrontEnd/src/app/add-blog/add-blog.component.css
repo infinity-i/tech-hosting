@@ -1,10 +1,9 @@
-input{
+/* input{
     width: 450px;
     min-height: 40px;
     max-height: fit-content;
     border: 1px solid black;
     margin-left: 50px;
-    /* margin-left: 40px; */
 }
 
 #desc{
@@ -15,7 +14,6 @@ input{
     width: 70%;
     margin-left: 15%;
     height: 700px;
-    /* padding-left: 100px; */
     text-align: center;
     padding-top: 130px;
     background-color: rgba(182, 192, 193, 0.395);
@@ -31,4 +29,4 @@ input{
 
 .ilable{
     margin-left: -100px;
-}
+} */

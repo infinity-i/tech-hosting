@@ -59,7 +59,7 @@
           </div>
           <div class="po2txt">
             <div class="po2heading">
-              <h1>Bulding the <br> Nations    future</h1>  
+              <h1>Bulding the  Nations    futureNations    futureNations    futureNations    future</h1>  
             </div>
             <div class="po2date"><p>July 24,2022 </p></div>
     
@@ -103,25 +103,37 @@
 
   
 
-  <div class="daytoday1">
-
-    <div class="box">
-
-    </div>
-
-    <div class="box">
+  <!-- <div class="daytoday" > -->
+ 
+    <section id="sample" class="">
+      <!-- <app-header></app-header> -->
+      <!-- <img src="../../assets/images/post7.jpg" alt="">  -->
+      <!-- <h3 class="text-center py-4">BOOKS</h3> -->
+      <div class="container d-flex flex-wrap ">
+        <div class="box allblog" *ngFor="let i of blogs">
+          <div class="boxbody">
+            <div class="imgContainer"> <img src="../../assets/images/post7.jpg" alt="">  </div>
+            <div class="po3txt">
+              <div class="po3heading">
+                <h1>{{i.title}}</h1>  
+              </div>
+              <div class="po3date"><p>July 24,2022 </p></div>
       
-    </div>
+            </div>
+          </div>
 
-    <div class="box">
-      
-    </div>
+        </div>
+      </div>
+      </section>
     
 
-  </div>
+  <!-- </div> -->
+
+ 
 
 
 </div>
+
 
 <app-footer></app-footer>
 

@@ -23,9 +23,11 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
     },
     {
       path:'addblog',
-      canActivate : [AuthGuard],
+      // canActivate : [AuthGuard],
       component:AddBlogComponent
-    }
+    },
+  {path:'back',component:BlogsComponent},
+
   ]},
   {path:'admin',component:AdminComponent},
   {path:'pending',component:PendingComponent}];
