@@ -14,7 +14,16 @@
          <h3 class="bname">{{i.title}}</h3>    
          <p>{{i.content}}</p>
          <h4>-{{i.username}}</h4>
+        
          <div class="button">
+          <label>Category :</label>
+          <select id="filter">
+           <option value="FrontEnd" name="category">Front End</option>
+           <option value="BackEnd" name="category">Back End</option>
+           <option value="DataBase" name="category">Database</option>
+           <option value="Hosting" name="category">Hosting</option>
+           <option value="Others" name="category">Others</option>
+          </select>
             <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
             <button type="button" class="btn btn-danger">Deny</button>
            </div>
