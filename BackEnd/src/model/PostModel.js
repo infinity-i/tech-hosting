@@ -13,8 +13,9 @@ const postSchema = new mongoose.Schema({
     title: { type: String,required:true,unique:true },
     content: { type: String,required:true},
     username: { type: String, required:true },
-    category: { type: String,default: null },
+    category: { type: String },
     approved: { type: String,default: false,required:false },
+    image : { type : String, required : true},
     createdttm: { type: Date, required: true, default: Date.now }
 });
 

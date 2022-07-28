@@ -27,16 +27,20 @@ export class LoginComponent implements OnInit {
 onlogin() {
     console.log("login button hit");
     console.log(this.loginUserData);
-    
-    this.auth.loginUser(this.loginUserData)
-    .subscribe(
-      (      res: { token: string; }) => {
-        localStorage.setItem('token', res.token)
-        this.router.navigate(['/home'])
-      },
-      (     err: any) => {
-        console.log(err);
-        this.router.navigate(['signup'])
-      });
+    if(this.loginUserData.email==null||this.loginUserData.password==null){
+      console.log("values missing");
+      this.router.navigate(['login'])
+    }
+    else{
+      this.auth.loginUser(this.loginUserData)
+        .subscribe((res: { token: string; }) => {
+            localStorage.setItem('token', res.token)
+            this.router.navigate(['/home'])
+          },
+          (     err: any) => {
+            console.log(err);
+            this.router.navigate(['signup'])
+          });
+    }  
   }
 }

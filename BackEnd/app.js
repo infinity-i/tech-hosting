@@ -4,6 +4,7 @@ const postModel = require('./src/model/PostModel');
 const categoryModel = require('./src/model/CategoryModel');
 const express= require('express');
 const cors = require('cors');
+
 const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ("bcryptjs");
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
-
+ 
 //For test purpose
 app.get('/', (req, res) => {
     res.send({
@@ -38,8 +39,8 @@ function verifyToken(req, res, next) {
     }
     req.userId = payload.subject
     next()
-  }
-
+  }    
+ 
 //Register API
 app.post('/register', async (req,res)=> {
         console.log('reached');
@@ -88,6 +89,7 @@ app.post('/posts/savepost', function(req,res){
         title : req.body.item.title,
         content : req.body.item.content,
         username : req.body.item.username,
+        category : "undefined"
    }       
    const newpost = new postModel(post);
    newpost.save();
@@ -115,32 +117,27 @@ app.get('/posts', function(req,res){
     })
 })
 
+//To display posts based on categories
+app.get('/posts/category/:category',  (req, res) => {
+    const id = req.params.id;
+    userModel.find({"category":category})
+      .then((posts)=>{
+          res.send(posts);
+      });
+  })
+  
 //To change approved value on approval by admin
-app.get('/admin/approve', function(req,res){
-    posts.find()
-        .then((blog)=>{
-            res.send(blog);
-        })
-    // console.log(req.body.title)
-    // id=req.body._id,
-    // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
-    //         .then(function(){
-    //             res.send();
-    //         })
+app.put('/admin/approve',(req,res)=>{
+    console.log(req.body)
+    id=req.body._id,
+    category= req.body.category
+    userModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
+                                "approved":true
+                                }})
+   .then(function(){
+       res.send();
+   })
 })
-
-//Add categories 
-app.post('/categories', async(req,res) => {
-    const newcategory = new categoryModel(req.body);
-    try{
-        const savedcategory = await newcategory.save();
-        res.status(200).json(savedcategory);
-    }catch(err) {
-        res.status(500).json(err);
-    }
-} );
-
-
 
 //Port setup
 app.listen(process.env.PORT,()=>{
