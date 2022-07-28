@@ -8,6 +8,7 @@ const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ("bcryptjs");
 const req = require('express/lib/request');
+const posts = require('./src/model/PostModel');
 const app = new express();
 
 app.use(express.json());
