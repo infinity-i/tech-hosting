@@ -75,6 +75,11 @@ app.post('/login', async(req,res) => {
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         const user = await userModel.findOne({email:email});
+        console.log(user);
+        if(user==null){
+            console.log('user not found')
+        }
+        else{
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
             let payload = {subject: email+password}
@@ -83,8 +88,8 @@ app.post('/login', async(req,res) => {
             console.log("key value matches");
         }else {
             res.send("Invalid credentials");
-        }     
-    });
+        }    
+    }});
 
 
 //create post
