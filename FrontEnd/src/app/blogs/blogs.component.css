@@ -77,6 +77,12 @@
     height: 30px;
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0);
+    height:30px;opacity:.5;
+}
+
+.items input::-webkit-input-placeholder {
+    color: rgb(0, 0, 0); /*Change the placeholder color*/
+    opacity: 1; /*Change the opacity between 0 and 1*/
 }
 
 .items input:active{

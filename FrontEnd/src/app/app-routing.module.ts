@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthGuard } from './auth.guard';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 const routes: Routes = [{path:'',component:WelcomeComponent},
   {path:'login',component:LoginComponent},
@@ -26,9 +27,19 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
       // canActivate : [AuthGuard],
       component:AddBlogComponent
     },
-  {path:'back',component:BlogsComponent},
+    {
+      path:'viewblog',component:ViewblogComponent
+    },
+    
+    {
+      path:'back',component:BlogsComponent
+    },
 
   ]},
+  // {
+  //   path:'viewblog',
+  //   component:ViewblogComponent
+  // },
   {path:'admin',component:AdminComponent},
   {path:'pending',component:PendingComponent}];
 

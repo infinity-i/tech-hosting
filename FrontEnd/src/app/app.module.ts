@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { PendingComponent } from './pending/pending.component';
 import { AuthGuard } from './auth.guard';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AuthGuard } from './auth.guard';
     HeaderComponent,
     AdminComponent,
     PendingComponent,
-    BlogsComponent
+    BlogsComponent,
+    ViewblogComponent
   ],
   imports: [
     AppRoutingModule,
