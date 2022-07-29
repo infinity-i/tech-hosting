@@ -20,12 +20,15 @@
                         <div class="card-body">
                           <h5 class="card-title">{{i.title}}</h5>
                           <h6 class="card-title">{{i.username}}</h6>
-                          <input type="checkbox" id="readmore" />
+                        <input type="checkbox" id={{i._id}} />
+
                           <div class="inner">
                           <p class="card-text" id="para">{{i.content}}</p>
                         </div>
-                        <label for="readmore">Read </label>
                         </div>
+
+                        <label for={{i._id}} >Read </label>
+
                        </div>
                 </div>
         </div>
