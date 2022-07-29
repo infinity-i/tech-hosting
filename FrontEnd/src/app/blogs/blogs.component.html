@@ -1,31 +1,142 @@
-<div class="body">
-    <!-- <p>blogs works!</p> -->
-    <div class="blogb">
-        <div class="outerb">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="../../assets/images/sec2img1.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../../assets/images/sec2img2.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://ictkerala.org/assets/images/ictaku.png" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            
+<div class="nav">
+
+  <!-- class="nav" -->
+  <div class="navbody">
+      <div class="head"><h6>TechRoom</h6></div>
+
+      <div class="items">
+        <!-- <i class="fa-light fa-magnifying-glass"></i> -->
+        <div class="inp">
+          <!-- <i class="fa-duotone fa-backward"></i> -->
+          <!-- <i class="fa-light fa-magnifying-glass"></i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search searchicon" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007
+             1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+          <input type="text" placeholder="TechRoom Search" style="opacity: 1;">
         </div>
+        <!-- <label for="">popular topics</label> -->
+          <!-- <a href="">Add blog</a> -->
+          <select name="category" id="cat">
+            <option value="all" >popular topics</option>
+            <option value="all">FSD</option>
+            <option value="all">Cyber Security</option>
+            <option value="all">Artificial i</option>
+
+          </select>
+  
+      </div>
+  </div>
+
+</div>
+
+<div class="body">
+
+  <div class="latest">
+
+    <h2>Latest News</h2>
+    <div id="post1" class="allblog" (click)="showblog()">
+
+      <div class="img">
+        <img src="../../assets/images/post1.jpg" alt="">
+      </div>
+      <div class="txt">
+        <div class="heading">
+          <h1>How ICT Accademy is empowering the generation to build <br> their future</h1>  
+        </div>
+        <div class="date"><p>July 24,2022 </p></div>
+
+      </div>
+        
 
     </div>
 
+    <div class="section2">
+      <div id="post2" class="allblog" (click)="showblog()">
+        
+          <div class="img">
+            <img src="../../assets/images/post2.png" alt="">
+          </div>
+          <div class="po2txt">
+            <div class="po2heading">
+              <h1>Bulding the  Nations    futureNations    futureNations    futureNations    future</h1>  
+            </div>
+            <div class="po2date"><p>July 24,2022 </p></div>
+    
+          </div>
+
+      </div>
+  
+      <div id="post2" class="allblog" (click)="showblog()">
+
+        <div class="img">
+          <img src="../../assets/images/post3.jpg" alt="">
+        </div>
+
+        <div class="po2txt">
+          <div class="po2heading">
+            <h1>Build your Career <br> with ICTAK</h1>  
+          </div>
+          <div class="po2date"><p>July 24,2022 </p></div>
+  
+        </div>
+  
+      </div>
+
+
+      
+    </div>    
+  </div>
+
+
+
+  <!-- <div class="daytoday" *ngFor="let i of blogs">
+
+    <div class="box allblog"   >
+      <img src="../../assets/images/post7.jpg" alt="">
+      <h2>{{i.title}}</h2>
+
+      <p>12 jun 2022</p>
+    </div>
+
+  </div> -->
+
+  
+
+  <!-- <div class="daytoday" > -->
+ 
+    <section id="sample" class="">
+      <!-- <app-header></app-header> -->
+      <!-- <img src="../../assets/images/post7.jpg" alt="">  -->
+      <!-- <h3 class="text-center py-4">BOOKS</h3> -->
+      <div class="container d-flex flex-wrap ">
+        <div class="box allblog" *ngFor="let i of blogs" (click)="showblog()">
+          <div class="boxbody">
+            <div class="imgContainer"> <img src="../../assets/images/post7.jpg" alt="">  </div>
+            <div class="po3txt">
+              <div class="po3heading">
+                <h1>{{i.title}}</h1>  
+              </div>
+              <div class="po3date"><p>July 24,2022 </p></div>
+      
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </section>
+    
+
+  <!-- </div> -->
+
+ 
+
+
 </div>
+
+
+<app-footer></app-footer>
+
+
+<!-- ################################################# -->
+

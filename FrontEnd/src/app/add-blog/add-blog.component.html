@@ -1,48 +1,37 @@
-<div class="body">
-    <div class='card'>
-      <form id="Form" (ngSubmit)="AddBlog()" ngNativeValidate >
-        <div class='card-header' style="font-size:20px;">
-          ADD BLOG
+
+
+  <div class="body">
+    <form  (ngSubmit)="AddBlog()" ngNativeValidate >
+
+      <div class="addblogC">
+
+        <div class="addbody">
+          <h1>Add your blog</h1>
+          <label for="title">Blog Title</label><br>
+          <input type="text"  placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" required  id=""><br>
+
+          <label for="title">Author name</label><br>
+          <input type="text"  placeholder="blog author name"  name="blogauthor" [(ngModel)]="newBlog.username" required  id=""><br>
+
+          <label for="title">Blog image</label><br>
+          <input type="text" name="title" placeholder="blog image url"  id=""><br>
+          <!-- <input type="text" name="blogimage" placeholder="blog image" [(ngModel)]="newBlog.image" id=""><br> -->
+
+
+          <label for="title">Blog content</label><br>
+          <!-- <input type="text" name="title" placeholder="write your blog content" id=""><br> -->
+          <textarea name="content" id="" cols="30" rows="10" placeholder="write your blog content" required  name="blogcontent" 
+          [(ngModel)]="newBlog.content"></textarea>
         </div>
-        <div class='card-body'>            
-          <div class='table-responsive'>
-            <table class='table'>       
-            
-              <tbody>  
-                    <!-- <tr>
-                      <td> <label>Book Author</label></td>
-                      <td><input type="text" name="B_auth"  required></td>                  
-                    </tr>    -->
-                    <tr>
-                        <td><label>Title</label></td>
-                        <td><input type="text" name="B_img" [(ngModel)]="newBlog.title"  required></td>                  
-                      </tr>  
-                      <tr>
-                        <td><label>Username</label></td>
-                        <td><input type="text" name="B_title" [(ngModel)]="newBlog.username"  required></td>                  
-                      </tr>  
-                      <tr>
-                        <td><label >Blog content</label></td>
-                        <td><input type="text" id="desc" name="B_content" class="Isize" [(ngModel)]="newBlog.content"  required ></td>                  
-                      </tr>  
-                      <tr>
-                        <td></td>
-                                       
-                        <td><button id="Form" type="submit" class="btn btn-success" style="margin-right:30px ;" >Submit</button> 
-                          <button routerLink="/books"  type="button" class="btn btn-danger">Cancel</button>  </td>  
-                       <!-- <td><input type="submit" value="button" /></td>                   -->
-                      </tr>  
-                      
-                      
-              </tbody>
-            </table>
-          </div>
+
+        <div class="btn1">
+          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px ;" >Submit</button> 
+          <button  id="btncancel" type="button" class="btn btn-light" onclick="history.back()" >Cancel</button>
         </div>
-    
-        <!-- <td><button type="submit">Submit</button></td>                   -->
-    
-      </form>
-    </div>
-   
+
+
+
+      </div>
+    </form>
 
   </div>
