@@ -28,18 +28,15 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
       component:AddBlogComponent
     },
     {
-      path:'viewblog',component:ViewblogComponent
+      path:'viewblog',component:ViewblogComponent,
+
     },
     
     {
-      path:'back',component:BlogsComponent
+      path:'back',component:HomeComponent
     },
 
   ]},
-  // {
-  //   path:'viewblog',
-  //   component:ViewblogComponent
-  // },
   {path:'admin',component:AdminComponent},
   {path:'pending',component:PendingComponent}];
 
