@@ -29,6 +29,8 @@
     display: block;
     position: sticky;
     top: 0;
+    font-weight: lighter;
+    color: rgb(123, 123, 123);
 
 
 }
@@ -58,11 +60,12 @@
     /* min-height: 70vh; */
     /* height: 150vh; */
     height: fit-content;
-    border: 1px solid rgba(75, 75, 75, 0.234);
+    border: 1px solid rgba(75, 75, 75, 0.114);
     margin: 20px 0 30px 250px;
     top: 0;
+    padding: 10px;
     
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .blogimage{
