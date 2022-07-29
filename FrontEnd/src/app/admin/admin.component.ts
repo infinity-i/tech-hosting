@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogModel } from '../add-blog/add-blog.model';
+import { BlogService } from '../blog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  
-  constructor() { }
+  blogs:BlogModel[] | any;
+  constructor(private blogService:BlogService, public router:Router) { }
 
   ngOnInit(): void {
+    this.blogService.getBlogs().subscribe((data) => {
+      this.blogs = JSON.parse(JSON.stringify(data))
+    })
   }
 
 }

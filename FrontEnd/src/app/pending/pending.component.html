@@ -1,18 +1,33 @@
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 <app-header></app-header>
-<div class="col-md-12">
-<div class="bg">
-    <h3 class="title">Pending Blogs</h3>
-    <div class="pages" *ngFor="let i of blogs">
-        <div class="page">
-            <h4 class="bname">{{i.title}}</h4>
-            <h5>{{i.username}}</h5>
-            <p>{{i.content}}</p>
+
+<div class="jumbotron">
+    <h1 class="title">Pending Blogs</h1>
+  <div id="list" class="container text-center" *ngFor="let i of blogs">
+        <div class="content">
+         <h3 class="bname">{{i.title}}</h3>    
+         <p>{{i.content}}</p>
+         <h4>-{{i.username}}</h4>
+        
+         <div class="button">
+          <label>Category :</label>
+          <select id="filter">
+           <option value="FrontEnd" name="category">Front End</option>
+           <option value="BackEnd" name="category">Back End</option>
+           <option value="DataBase" name="category">Database</option>
+           <option value="Hosting" name="category">Hosting</option>
+           <option value="Others" name="category">Others</option>
+          </select>
+            <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
+            <button type="button"  class="btn btn-danger">Deny</button>
+           </div>
         </div>
-        <div class="button">
-        <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
-        <button type="button" class="btn btn-danger">Deny</button>
-       </div>
-    </div>
 </div>
 </div>
 
