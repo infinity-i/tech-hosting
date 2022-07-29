@@ -34,7 +34,7 @@
 .body{
     width: 100%;
     height: 95vh;
-    background-color: aqua;
+    background-color: rgb(236, 236, 236);
     display: grid;
     place-items: center;
 }
@@ -43,7 +43,7 @@
 
     width: 80%;
     height: 90%;
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
     display: grid;
     place-items: center;
 }
@@ -51,10 +51,15 @@
 .addbody{
     width: 70%;
     height: 100%;
-    border: 1px solid rebeccapurple;
+    /* border: 1px solid rebeccapurple; */
+    background-color: rgb(255, 255, 255);
     padding: 20px 0 0 185px ;
     
 
+}
+
+.addbody label{
+    margin-bottom: 10px;
 }
 
 .addbody input{
@@ -64,6 +69,7 @@
     outline: none;
     border: none;
     margin-bottom: 30px;
+    border: .8px solid rgba(206, 206, 206, 0.551);
 }
 
 .addbody textarea{
@@ -72,4 +78,6 @@
     outline: none;
     border: none;
     border-radius: 10px;
+    border: 1px solid rgba(206, 206, 206, 0.551);
+
 }
