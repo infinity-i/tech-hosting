@@ -24,26 +24,26 @@ app.get('/', (req, res) => {
 });
 
 //Token Verification
-function verifyToken(req,res,next)
-{
-    if(!req.headers.authorization)
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split('')[1]
-    if (token =='null')
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    let payload= jwt.verify(token,'secretkey')
-    console.log(payload)
-    if(!payload)
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    req.userId=payload.subject
-    next()
-}
+// function verifyToken(req,res,next)
+// {
+//     if(!req.headers.authorization)
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let token = req.headers.authorization.split('')[1]
+//     if (token =='null')
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let payload= jwt.verify(token,'secretkey')
+//     console.log(payload)
+//     if(!payload)
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     req.userId=payload.subject
+//     next()
+// }
 
 
 //Register API
@@ -79,8 +79,8 @@ app.post('/login', async(req,res) => {
         if(user==null){
             console.log('user not found')
         }
-        else{
-        const isMatch = await bcrypt.compare(password, user.password);
+         else{
+            const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
             let payload = {subject: email+password}
             let token = jwt.sign(payload, 'secretKey')
@@ -93,7 +93,7 @@ app.post('/login', async(req,res) => {
 
 
 //create post
-app.post('/posts/savepost', verifyToken, function(req,res){
+app.post('/posts/savepost',function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
@@ -111,10 +111,10 @@ app.get('/admin/pending', function(req,res){
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     postModel.find({approved:false})
     .then(function(post){
-        console.log('All Approved Posts displayed');
+        console.log('All pending Posts displayed');
         res.send(post);
     })
-})
+}) 
 
 //To display all posts that are approved in home page
 app.get('/posts', function(req,res){
@@ -136,16 +136,6 @@ app.get('/posts/category/:category',  (req, res) => {
       });
   })
 
-
-
-// app.get('/admin/approve', function(req,res){
-//     console.log(req.body.title)
-//     id=req.body._id,
-//     postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
-//             .then(function(){
-//                 res.send();
-//             })
-// })
 
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
