@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(public auth:AuthService,public router: Router) { }
   
   
-  loginUserData = {email:'', password:''};
+   loginUserData = {email:'', password:''};
  
   ngOnInit(): void {
   }
@@ -36,7 +36,7 @@ onlogin() {
       },
       (      err: any) => {
         console.log(err);
-        this.router.navigate(['/welcome'])
+        this.router.navigate(['/'])
       });
   }
 }
