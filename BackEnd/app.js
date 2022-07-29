@@ -1,7 +1,7 @@
 require('./config/config');
 const userModel = require('./src/model/UserModel');
 const postModel = require('./src/model/PostModel');
-const categoryModel = require('./src/model/CategoryModel');
+
 const express= require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
@@ -23,6 +23,29 @@ app.get('/', (req, res) => {
     })
 });
 
+//Token Verification
+function verifyToken(req,res,next)
+{
+    if(!req.headers.authorization)
+    {
+        return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split('')[1]
+    if (token =='null')
+    {
+        return res.status(401).send('Unauthorized request')
+    }
+    let payload= jwt.verify(token,'secretkey')
+    console.log(payload)
+    if(!payload)
+    {
+        return res.status(401).send('Unauthorized request')
+    }
+    req.userId=payload.subject
+    next()
+}
+
+
 //Register API
 app.post('/register', async (req,res)=> {
 
@@ -42,28 +65,7 @@ app.post('/register', async (req,res)=> {
         res.status(201);
         }else{
             res.send("Password not matching");
-        }
-    // } catch (error) {
-    //     console.log('error catch');
-
-    //     res.status(400).send(error);
-        
-    // }
-
-    // var user = new userModel(user);
-    //     console.log(user);
-    //     user.save((err,user)=>{
-    //         if(err){
-    //             console.log("error saving user to db");
-    //         }
-    //         else{
-    //             let payload={subject:user._id};
-    //             let token = jwt.sign(payload,'secretKey');
-    //             res.status(200).send({token});
-              
-    //         }
-    //     });
-        
+        }  
 
 })
 
@@ -73,6 +75,11 @@ app.post('/login', async(req,res) => {
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         const user = await userModel.findOne({email:email});
+        console.log(user);
+        if(user==null){
+            console.log('user not found')
+        }
+        else{
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
             let payload = {subject: email+password}
@@ -81,21 +88,18 @@ app.post('/login', async(req,res) => {
             console.log("key value matches");
         }else {
             res.send("Invalid credentials");
-        }     
-    });
-    
-
-
- 
+        }    
+    }});
 
 
 //create post
-app.post('/posts/savepost', function(req,res){
+app.post('/posts/savepost', verifyToken, function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
         content : req.body.item.content,
         username : req.body.item.username,
+        category : "undefined"
    }       
    const newpost = new postModel(post);
    newpost.save();
@@ -123,31 +127,39 @@ app.get('/posts', function(req,res){
     })
 })
 
+//To display posts based on categories
+app.get('/posts/category/:category',  (req, res) => {
+    const id = req.params.id;
+    postModel.find({"category":category})
+      .then((posts)=>{
+          res.send(posts);
+      });
+  })
+
+
+
+// app.get('/admin/approve', function(req,res){
+//     console.log(req.body.title)
+//     id=req.body._id,
+//     postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
+//             .then(function(){
+//                 res.send();
+//             })
+// })
+
 //To change approved value on approval by admin
-app.get('/admin/approve', function(req,res){
-    posts.find()
-        .then((blog)=>{
-            res.send(blog);
-        })
-    // console.log(req.body.title)
-    // id=req.body._id,
-    // postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
-    //         .then(function(){
-    //             res.send();
-    //         })
+app.put('/admin/approve',(req,res)=>{
+    console.log(req.body)
+    id=req.body._id,
+    category= req.body.category
+    postModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
+                                "approved":true
+                                }})
+   .then(function(){
+       res.send();
+   })
+
 })
-
-//Add categories 
-app.post('/categories', async(req,res) => {
-    const newcategory = new categoryModel(req.body);
-    try{
-        const savedcategory = await newcategory.save();
-        res.status(200).json(savedcategory);
-    }catch(err) {
-        res.status(500).json(err);
-    }
-} );
-
 
 
 //Port setup
