@@ -33,7 +33,7 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
     },
     
     {
-      path:'back',component:HomeComponent
+      path:'back',component:BlogsComponent
     },
 
   ]},
