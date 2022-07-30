@@ -24,26 +24,26 @@ app.get('/', (req, res) => {
 });
 
 //Token Verification
-function verifyToken(req,res,next)
-{
-    if(!req.headers.authorization)
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split('')[1]
-    if (token =='null')
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    let payload= jwt.verify(token,'secretkey')
-    console.log(payload)
-    if(!payload)
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    req.userId=payload.subject
-    next()
-}
+// function verifyToken(req,res,next)
+// {
+//     if(!req.headers.authorization)
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let token = req.headers.authorization.split('')[1]
+//     if (token =='null')
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let payload= jwt.verify(token,'secretkey')
+//     console.log(payload)
+//     if(!payload)
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     req.userId=payload.subject
+//     next()
+// }
 
 
 //Register API
@@ -94,7 +94,7 @@ app.post('/login', async(req,res) => {
 
 
 //create post
-app.post('/posts/savepost', verifyToken, function(req,res){
+app.post('/posts/savepost',function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
@@ -147,6 +147,16 @@ app.get('/posts/category/:category',  (req, res) => {
 //                 res.send();
 //             })
 // })
+app.get('/singleblog/:id',(req, res)=>{
+    const id = req.params.id;
+    postModel.findOne({'_id':id})
+    .then((i)=>{
+        res.send(i);
+        console.log(i);
+    });
+    // console.log(i)
+
+})
 
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
