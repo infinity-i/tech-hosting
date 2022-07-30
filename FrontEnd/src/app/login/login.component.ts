@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(public auth:AuthService,public router: Router) { }
   
   
-  loginUserData = {email:'', password:''};
+   loginUserData = {email:'', password:''};
  
   ngOnInit(): void {
   }
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 onlogin() {
     console.log("login button hit");
     console.log(this.loginUserData);
+<<<<<<< HEAD
     if(this.loginUserData.email==null||this.loginUserData.password==null){
       console.log("values missing");
       this.router.navigate(['login'])
@@ -42,5 +43,18 @@ onlogin() {
             this.router.navigate(['signup'])
           });
     }  
+=======
+    
+    this.auth.loginUser(this.loginUserData)
+    .subscribe(
+      (      res: { token: string; }) => {
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/home'])
+      },
+      (      err: any) => {
+        console.log(err);
+        this.router.navigate(['/'])
+      });
+>>>>>>> master
   }
 }

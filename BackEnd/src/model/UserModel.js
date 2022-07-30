@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
     repeatPassword: { type: String, required:false },
     createdttm: { type: Date, required: true, default: Date.now }
     //userType: { type: String,required:true }
+    createdttm    : { type: Date, required: true, default: Date.now }
 });
 
 userSchema.pre("save", async function(next) {
@@ -26,6 +27,7 @@ userSchema.pre("save", async function(next) {
         this.password = await bcrypt.hash(this.password,1);       
         console.log(`${this.password}`);
         this.repeatPassword=undefined;
+
     }
     next();
 })

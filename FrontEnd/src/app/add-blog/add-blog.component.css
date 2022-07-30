@@ -1,10 +1,9 @@
-input{
+/* input{
     width: 450px;
     min-height: 40px;
     max-height: fit-content;
     border: 1px solid black;
     margin-left: 50px;
-    /* margin-left: 40px; */
 }
 
 #desc{
@@ -15,7 +14,6 @@ input{
     width: 70%;
     margin-left: 15%;
     height: 700px;
-    /* padding-left: 100px; */
     text-align: center;
     padding-top: 130px;
     background-color: rgba(182, 192, 193, 0.395);
@@ -31,4 +29,116 @@ input{
 
 .ilable{
     margin-left: -100px;
+} */
+
+.body{
+    width: 100%;
+    min-height: 95vh;
+    max-height: fit-content;
+    background-color: rgb(241, 241, 241);
+    padding: 20px 0 20px 0; 
+    display: grid;
+    place-items: center;
+}
+
+form{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.addblogC{
+    width: 80%;
+    min-height: 100%;
+    max-height: fit-content;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    place-items: center;
+}
+
+.addbody{
+    width: 70%;
+    height: 100%;
+    margin-left: -60px;
+    /* border: 1px solid rebeccapurple; */
+    background-color: rgb(255, 255, 255);
+    padding: 20px 0 0 185px ;
+}
+
+.addbody label{
+    margin-bottom: 10px;
+}
+
+.addbody input{
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 13px;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+    margin-bottom: 30px;
+    border: .8px solid rgba(206, 206, 206, 0.689);
+}
+
+.addbody textarea{
+    width: 80%;
+    height: auto;
+    outline: none;
+    padding-left: 10px;
+    font-size: 13px;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid rgba(206, 206, 206, 0.689);
+
+}
+
+.btn1{
+    width: 100%;
+    height: fit-content;
+    /* display: flex; */
+    /* border: 1px solid blue; */
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.btn1 button{
+    width: 80px;
+
+}
+
+#btnsubmit{
+    background-color: rgba(36, 233, 36, 0.362);
+    /* transform: 2s; */
+    /* transition: .3s; */
+}
+
+
+#btnsubmit:hover{
+    /* background-color: rgba(21, 226, 21, 0.9); */
+    background-color: rgba(29, 163, 29, 0.789);
+
+    color: white;
+}
+
+#btncancel{
+    background-color: rgba(255, 0, 0, 0.429);
+    /* transition: .3s; */
+
+}
+
+#btncancel:hover{
+    background-color: rgba(215, 57, 57, 0.868);
+    color: white;
+
+
+}
+
+.addbody h1{
+    font-size: x-large;
+    /* margin: 0; */
+    margin-left: 170px;
+    padding-bottom: 15px;
+    /* border-bottom: 1px solid gray; */
 }

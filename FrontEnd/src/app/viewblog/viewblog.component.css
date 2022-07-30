@@ -1,0 +1,134 @@
+.body{
+    width: 100%;
+    height: 93.6vh;
+    background-color: rgb(252, 252, 252);
+}
+/* 
+.backward{
+    width: 85px;
+    height: 80px;
+    border: 1px solid red;
+} */
+
+/* .backward{
+    
+} */
+
+.back{
+    width: 40px;
+    height: 40px;
+    /* color: aliceblue; */
+    /* background-color: rgb(210, 93, 93); */
+    font-weight: bold;
+    /* margin-top: 50px; */
+    margin: 20px 0 0 35px;
+    border-radius: 50%;
+    /* transform:; */
+    transition: .3s;
+    z-index: 2;
+    display: block;
+    position: sticky;
+    top: 0;
+    font-weight: lighter;
+    color: rgb(123, 123, 123);
+
+
+}
+
+.back:hover{
+    /* background-color: black; */
+    /* color: white; */
+    border-radius:75%;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.blogbody{
+    width: 100%;
+    min-height: 93vh;
+    max-height: fit-content;
+    /* border: 1px solid yellowgreen; */
+    display: flex;
+    text-align: center;
+    /* background-color: aqua; */
+    /* margin-top: -75px; */
+    top: 0;
+}
+
+.blogview{
+    width: 850px;
+    /* min-height: 70vh; */
+    /* height: 150vh; */
+    height: fit-content;
+    border: 1px solid rgba(75, 75, 75, 0.114);
+    margin: 20px 0 30px 250px;
+    top: 0;
+    padding: 10px;
+    
+    border-radius: 5px;
+}
+
+.blogimage{
+    width: 100%;
+    height: 380px;
+    /* border: 1px solid rosybrown; */
+
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    /* display: grid; */
+    /* place-items: center; */
+    text-align: center;
+}
+
+.blogimage img{
+    width: auto;
+    height: 100%;
+
+}
+
+.blogheading{
+    width:100%;
+    height: 110px;
+    margin: 15px 0 0 0;
+    /* border: 1px solid red; */
+    text-align: left;
+    padding-left: 6.5px;
+}
+
+.blogcontent{
+    width: 100%;
+    /* min-height:550px; */
+    max-height: fit-content;
+    min-height: 300px;
+    /* border: 1px solid yellow; */
+    text-align: left;
+    line-break: loose;
+    /* margin: 10px 5px 0 5px; */
+    padding: 10px 6.5px 0 6.5px;
+
+}
+
+.blogauther{
+    width: fit-content;
+    /* height: fit-content; */
+    height: 25px;
+    margin: 7px 5px;
+    color: rgb(0, 0, 0);
+    opacity: .5;
+    /* border: 1px solid brown; */
+    float: right;
+    font-size: 15px;
+}
+
+.blogdate{
+
+    width: fit-content;
+    /* height: fit-content; */
+    height: 25px;
+    margin: 7px 5px 4px 5px;
+    color: rgb(0, 0, 0);
+    opacity: .3;
+    /* border: 1px solid brown; */
+    float: left;
+    font-size: 12px;
+}

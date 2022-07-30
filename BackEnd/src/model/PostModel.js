@@ -15,9 +15,16 @@ const postSchema = new mongoose.Schema({
     username: { type: String, required:true },
     category: { type: String },
     approved: { type: String,default: false,required:false },
+<<<<<<< HEAD
     image : { type : String, required : true},
     createdttm: { type: Date, required: true, default: Date.now }
+=======
+    // image : { type : String, required : true},
+    createdttm    : { type: Date, required: true, default: Date.now }
+>>>>>>> master
 });
+
+
 
 const posts =new  mongoose.model('Post',postSchema);
 module.exports = posts;
