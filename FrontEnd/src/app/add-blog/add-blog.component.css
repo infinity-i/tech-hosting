@@ -78,7 +78,7 @@ form{
     padding-left: 10px;
     outline: none;
     border: none;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     border: .8px solid rgba(206, 206, 206, 0.689);
 }
 
@@ -141,4 +141,9 @@ form{
     margin-left: 170px;
     padding-bottom: 15px;
     /* border-bottom: 1px solid gray; */
+}
+
+.small{
+    /* margin-top: -150px; */
+    margin-left: -15px;
 }

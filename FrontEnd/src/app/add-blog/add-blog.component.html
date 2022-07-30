@@ -1,14 +1,24 @@
 
 
   <div class="body">
-    <form  (ngSubmit)="AddBlog()" ngNativeValidate >
+    <form #addblog="ngForm"  (ngSubmit)="AddBlog()" ngNativeValidate >
 
       <div class="addblogC">
 
         <div class="addbody">
           <h1>Add your blog</h1>
           <label for="title">Blog Title</label><br>
-          <input type="text"  placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" required  id=""><br>
+          <input type="text" #title="ngModel"  name="title" minlength="5" 
+           placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" 
+           [class.is-invalid]="title.invalid && title.touched" required> <br>
+           <!-- <small [class.d-none]="addblog.valid" class="px-3 text-danger">title shoud be minimum of 7 charecters</small> -->
+
+          <small [class.d-none]="title.errors && title.untouched" class="px-3 text-danger small">title shoud be minimum of 7 charecters</small>
+          <!-- <small *ngIf="title.valid&&title.touched" class="px-3 text-danger small">title shoud be minimum of 7 charecters</small> -->
+
+          <!-- <small [class.d-none]="title.invalid && title.untouched" class="px-3 text-success small">title looks good</small> -->
+
+          <br>
 
           <label for="title">Author name</label><br>
           <input type="text"  placeholder="blog author name"  name="blogauthor" [(ngModel)]="newBlog.username" required  id=""><br>
@@ -21,11 +31,14 @@
           <label for="title">Blog content</label><br>
           <!-- <input type="text" name="title" placeholder="write your blog content" id=""><br> -->
           <textarea name="content" id="" cols="30" rows="10" placeholder="write your blog content" required  name="blogcontent" 
-          [(ngModel)]="newBlog.content"></textarea>
+          #blogcont="ngModel" name="blogcont" minlength="70"
+          [(ngModel)]="newBlog.content"></textarea> <br>
+          <small [class.d-none]="blogcont.valid" class="px-3 text-danger small">blog content shoud be minimum of 70 charecters</small>
+          <small [class.d-none]="blogcont.invalid" class="px-3 text-success small">blog content looks good</small>
         </div>
 
         <div class="btn1">
-          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px ;" >Submit</button> 
+          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px;" [disabled]="addblog.form.invalid" >Submit</button> 
           <button  id="btncancel" type="button" class="btn btn-light" onclick="history.back()" >Cancel</button>
         </div>
 
