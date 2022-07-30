@@ -25,14 +25,14 @@ app.get('/', (req, res) => {
 });
 
 //Token Verification
-function verifyToken(req,res,next)
-{
-    if(!req.headers.authorization)
-    {
-        return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split('')[1]
-    console.log(token)
+// function verifyToken(req,res,next)
+// {
+//     if(!req.headers.authorization)
+//     {
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let token = req.headers.authorization.split('')[1]
+//     console.log(token)
     // if (token =='null')
     // {
     //     return res.status(401).send('Unauthorized request')
@@ -46,8 +46,8 @@ function verifyToken(req,res,next)
     //     return res.status(401).send('Unauthorized request')
     // }
     // req.userId=payload.subject
-    next()
-}
+   // next()
+//}
 
 
 //Register API
@@ -99,15 +99,35 @@ app.post('/login', async(req,res) => {
         }    
     }});
 
+    //admin login
+      app.post('/admin/login', async(req,res) => {
+        const email = req.body.loginUserData.email;
+        const password = req.body.loginUserData.password;
+        console.log(req.body);
+        const user = await userModel.findOne({email:email});
+        console.log(user);
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch){
+            let payload = {subject: email+password}
+            let token = jwt.sign(payload, 'secretKey')
+            res.status(200).send({token})
+            console.log("key value matches");
+        }else {
+            res.status(401).send("Invalid credentials");
+        }    
+    });
+
+    
 
 //create post
-app.post('/posts/savepost',verifyToken,function(req,res){
+app.post('/posts/savepost',function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
         content : req.body.item.content,
         username : req.body.item.username,
-        category : "undefined"
+        category : "undefined",
+        imageUrl :  req.body.item.imageUrl
    }       
    const newpost = new postModel(post);
    newpost.save();
