@@ -35,7 +35,7 @@
   <div class="latest">
 
     <h2>Latest News</h2>
-    <div id="post1" class="allblog" (click)="showblog()">
+    <div id="post1" class="allblog" >
 
       <div class="img">
         <img src="../../assets/images/post1.jpg" alt="">
@@ -52,7 +52,7 @@
     </div>
 
     <div class="section2">
-      <div id="post2" class="allblog" (click)="showblog()">
+      <div id="post2" class="allblog" >
         
           <div class="img">
             <img src="../../assets/images/post2.png" alt="">
@@ -67,7 +67,7 @@
 
       </div>
   
-      <div id="post2" class="allblog" (click)="showblog()">
+      <div id="post2" class="allblog">
 
         <div class="img">
           <img src="../../assets/images/post3.jpg" alt="">
@@ -110,7 +110,7 @@
       <!-- <img src="../../assets/images/post7.jpg" alt="">  -->
       <!-- <h3 class="text-center py-4">BOOKS</h3> -->
       <div class="container d-flex flex-wrap ">
-        <div class="box allblog" *ngFor="let i of blogs" (click)="showblog()">
+        <div class="box allblog" *ngFor="let i of blogs" (click)="showblog(i)">
           <div class="boxbody">
             <div class="imgContainer"> <img src="../../assets/images/post7.jpg" alt="">  </div>
             <div class="po3txt">

@@ -138,6 +138,26 @@ app.get('/posts/category/:category',  (req, res) => {
   })
 
 
+
+// app.get('/admin/approve', function(req,res){
+//     console.log(req.body.title)
+//     id=req.body._id,
+//     postModel.findByIdAndUpdate({"_id":id},{$set:{"approved":true}})
+//             .then(function(){
+//                 res.send();
+//             })
+// })
+app.get('/singleblog/:id',(req, res)=>{
+    const id = req.params.id;
+    postModel.findOne({'_id':id})
+    .then((i)=>{
+        res.send(i);
+        console.log(i);
+    });
+    // console.log(i)
+
+})
+
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
     console.log(req.body)

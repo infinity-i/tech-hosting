@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-blog.component.css']
 })
 export class AddBlogComponent implements OnInit {
-  newBlog = new BlogModel("","","","","");
+  newBlog = new BlogModel("","","","","","");
   constructor(private toast:NgToastService, public blogService: BlogService, public router:Router) { }
 
   ngOnInit(): void {
