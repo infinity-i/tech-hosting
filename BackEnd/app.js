@@ -24,25 +24,6 @@ app.get('/', (req, res) => {
     })
 });
 
-<<<<<<< HEAD
-//JWT Token verify
-function verifyToken(req, res, next) {
-    if(!req.headers.authorization) {
-      return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split(' ')[1]
-    if(token === 'null') {
-      return res.status(401).send('Unauthorized request')    
-    }
-    let payload = jwt.verify(token, 'secretKey')
-    if(!payload) {
-      return res.status(401).send('Unauthorized request')    
-    }
-    req.userId = payload.subject
-    next()
-  }    
- 
-=======
 //Token Verification
 // function verifyToken(req,res,next)
 // {
@@ -66,7 +47,6 @@ function verifyToken(req, res, next) {
 // }
 
 
->>>>>>> master
 //Register API
 app.post('/register', async (req,res)=> {
         console.log('reached');
@@ -81,15 +61,13 @@ app.post('/register', async (req,res)=> {
                 repeatPassword : req.body.registerUserData.repeatPassword
                 //userType : req.body.userType
             })
-<<<<<<< HEAD
-            const user= await userdata.save();
-            let payload={subject:user._id};
-            let token = jwt.sign(payload,'secretKey');
-            res.status(200).send({token});
-        }else{
-            res.send("Password not matching");
-        }
-=======
+        //     const user= await userdata.save();
+        //     let payload={subject:user._id};
+        //     let token = jwt.sign(payload,'secretKey');
+        //     res.status(200).send({token});
+        // }else{
+        //     res.send("Password not matching");
+        // }
         const user= await userdata.save();
         res.status(201);
         console.log('registration succefull')
@@ -97,7 +75,6 @@ app.post('/register', async (req,res)=> {
             res.send("Password not matching");
         }  
 
->>>>>>> master
 })
 
 //Login API
@@ -119,15 +96,9 @@ app.post('/login', async(req,res) => {
             console.log("key value matches");
         }else {
             res.send("Invalid credentials");
-<<<<<<< HEAD
-        }     
-    });
-    
-=======
         }    
     }});
 
->>>>>>> master
 
 //create post
 app.post('/posts/savepost',function(req,res){
@@ -167,31 +138,11 @@ app.get('/posts', function(req,res){
 //To display posts based on categories
 app.get('/posts/category/:category',  (req, res) => {
     const id = req.params.id;
-<<<<<<< HEAD
-    userModel.find({"category":category})
-=======
     postModel.find({"category":category})
->>>>>>> master
       .then((posts)=>{
           res.send(posts);
       });
   })
-<<<<<<< HEAD
-  
-//To change approved value on approval by admin
-app.put('/admin/approve',(req,res)=>{
-    console.log(req.body)
-    id=req.body._id,
-    category= req.body.category
-    userModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
-                                "approved":true
-                                }})
-   .then(function(){
-       res.send();
-   })
-})
-
-=======
 
 
 
@@ -229,7 +180,6 @@ app.put('/admin/approve',(req,res)=>{
 })
 
 
->>>>>>> master
 //Port setup
 app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
