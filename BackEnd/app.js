@@ -124,6 +124,17 @@ app.get('/posts', function(req,res){
     })
 })
 
+app.get('/singleblog/:id',(req, res)=>{
+    const id = req.params.id;
+    postModel.findOne({'_id':id})
+    .then((i)=>{
+        res.send(i);
+        console.log(i);
+    });
+    // console.log(i)
+
+})
+
 //To change approved value on approval by admin
 app.get('/admin/approve', function(req,res){
     posts.find()

@@ -23,10 +23,10 @@ export class BlogsComponent implements OnInit {
     })
   }
 
-  showblog(){
-    // alert('blog has been clicked');
+  showblog(i:any){
+    localStorage.setItem("viewblog", i._id.toString());
     this.router.navigate(['home/viewblog']);
-
+    // console.log("id = "+i._id)
   }
 
 
