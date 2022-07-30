@@ -147,6 +147,16 @@ app.get('/posts/category/:category',  (req, res) => {
 //                 res.send();
 //             })
 // })
+app.get('/singleblog/:id',(req, res)=>{
+    const id = req.params.id;
+    postModel.findOne({'_id':id})
+    .then((i)=>{
+        res.send(i);
+        console.log(i);
+    });
+    // console.log(i)
+
+})
 
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
