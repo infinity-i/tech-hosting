@@ -4,8 +4,8 @@ export class AuthData{
        public email: String,
        public phoneNo: String,
        public password: String,
-       public repeatPassword : String
-       
+       public repeatPassword : String,
+       public userType: String
     ) { }
 }
 

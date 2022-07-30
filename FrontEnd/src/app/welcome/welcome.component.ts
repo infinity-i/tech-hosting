@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { downA, fadeL, fadeR, fadeZ, imgani, imgani1, letter1, letter2, letter3, letter4 } from '../animations';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-welcome',
@@ -13,8 +14,9 @@ import { downA, fadeL, fadeR, fadeZ, imgani, imgani1, letter1, letter2, letter3,
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public auth:AuthService) { }
+   
+    
   ngOnInit(): void {
   }
 

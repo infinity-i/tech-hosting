@@ -25,13 +25,13 @@
         <!-- <label class="text-danger" *ngIf="form.submitted&&phone.errors?.['pattern']">Invalid Phone Number</label> -->
         </div>
 
-        <!-- <div>
+        <div>
           <label for="user">I'am a:</label>
-         <select id="user">
-          <option value="student" name="userType" #userType="ngModel"[(ngModel)]="registerUserData.userType">Student</option>
-          <option value="trainer" name="userType" #userType="ngModel"[(ngModel)]="registerUserData.userType">Trainer</option>
+         <select id ="user" name = "userType" #userType="ngModel"[(ngModel)]="registerUserData.userType">
+          <option value="student" name="userType" >Student</option>
+          <option value="trainer" name="userType" >Trainer</option>
          </select>
-        </div> -->
+        </div>
         
       <div class="txt_field">
         <input type="password" name="password" #password="ngModel" [(ngModel)]="registerUserData.password" required>

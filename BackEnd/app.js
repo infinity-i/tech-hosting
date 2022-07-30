@@ -10,6 +10,7 @@ const bcrypt = require ("bcryptjs");
 const req = require('express/lib/request');
 const posts = require('./src/model/PostModel');
 const app = new express();
+// const multer = require('multer');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -24,26 +25,29 @@ app.get('/', (req, res) => {
 });
 
 //Token Verification
-// function verifyToken(req,res,next)
-// {
-//     if(!req.headers.authorization)
-//     {
-//         return res.status(401).send('Unauthorized request')
-//     }
-//     let token = req.headers.authorization.split('')[1]
-//     if (token =='null')
-//     {
-//         return res.status(401).send('Unauthorized request')
-//     }
-//     let payload= jwt.verify(token,'secretkey')
-//     console.log(payload)
-//     if(!payload)
-//     {
-//         return res.status(401).send('Unauthorized request')
-//     }
-//     req.userId=payload.subject
-//     next()
-// }
+function verifyToken(req,res,next)
+{
+    if(!req.headers.authorization)
+    {
+        return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split('')[1]
+    console.log(token)
+    // if (token =='null')
+    // {
+    //     return res.status(401).send('Unauthorized request')
+    // }
+    
+    // let payload= jwt.verify(token,'secretkey')
+
+    // console.log(payload)
+    // if(!payload)
+    // {
+    //     return res.status(401).send('Unauthorized request')
+    // }
+    // req.userId=payload.subject
+    next()
+}
 
 
 //Register API
@@ -58,12 +62,12 @@ app.post('/register', async (req,res)=> {
                 email : req.body.registerUserData.email,
                 phoneNo: req.body.registerUserData.phoneNo,
                 password : req.body.registerUserData.password,
-                repeatPassword : req.body.registerUserData.repeatPassword
-                //userType : req.body.userType
+                repeatPassword : req.body.registerUserData.repeatPassword,
+                 userType : req.body.registerUserData.userType
             })
         const user= await userdata.save();
         res.status(201);
-        console.log('registration succefull')
+        console.log('registration successfull')
         }else{
             res.send("Password not matching");
         }  
@@ -79,22 +83,25 @@ app.post('/login', async(req,res) => {
         console.log(user);
         if(user==null){
             console.log('user not found')
+            res.status(401).send('user not found')
         }
          else{
             const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
             let payload = {subject: email+password}
+            
             let token = jwt.sign(payload, 'secretKey')
+            
             res.status(200).send({token})
             console.log("key value matches");
         }else {
-            res.send("Invalid credentials");
+            res.status(401).send("Invalid credentials");
         }    
     }});
 
 
 //create post
-app.post('/posts/savepost',function(req,res){
+app.post('/posts/savepost',verifyToken,function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
