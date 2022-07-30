@@ -179,6 +179,17 @@ app.put('/admin/approve',(req,res)=>{
 
 })
 
+//To delete the post data on rejection by admin
+app.delete('/admin/deny/:id',(req,res)=>{
+   
+    id = req.params.id;
+    postmodel.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+  })
+
 
 //Port setup
 app.listen(process.env.PORT,()=>{
