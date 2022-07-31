@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
     phoneNo: {type: String, required:false},
     password: { type: String, required:false },
     repeatPassword: { type: String, required:false },
-    createdttm: { type: Date, required: true, default: Date.now }
-    //userType: { type: String,required:true }
+    createdttm: { type: Date, required: true, default: Date.now },
+    //userType: { type: String,required:true },
     createdttm    : { type: Date, required: true, default: Date.now }
 });
 
