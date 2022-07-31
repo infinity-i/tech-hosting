@@ -14,8 +14,12 @@ export class BlogService {
   }
 
   getBlogs(){
-    return this.http.get('http://localhost:3000/admin/approved');
+    return this.http.get('http://localhost:3000/admin/pending');
   }
+
+  approvedBlogs(){
+    return this.http.get('http://localhost:3000/posts');
+  } 
 
   singleblog(id:any){
     return this.http.get('http://localhost:3000/singleblog/'+id);
@@ -24,7 +28,7 @@ export class BlogService {
   updateCategory(i:any){
     console.log("Blog Service");
     console.log(i);
-    return this.http.put('http://localhost:3000/admin/approve',i);
+    return this.http.put('http://localhost:3000/admin/approve',i).subscribe((data)=>console.log(data));
   }
   
 
