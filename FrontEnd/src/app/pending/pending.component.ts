@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PendingComponent implements OnInit {
   blogs:BlogModel[] | any;
+  category: any;
   constructor(private blogService:BlogService,public router:Router) { }
 
   ngOnInit(): void {
@@ -16,7 +17,22 @@ export class PendingComponent implements OnInit {
       this.blogs = JSON.parse(JSON.stringify(data));
     })
   }
+  onAccept(i:any){
+    this.blogService.updateCategory(i);   
+  }
+
+  Delete(id:any){
+    this.blogService.deleteBlog(id)
+      .subscribe((data) => {
+        this.blogs = this.blogs.filter(p => p !== this.blogs);
+      })
+  
+  }
 
  
 
 }
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
+

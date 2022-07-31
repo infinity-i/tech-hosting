@@ -4,6 +4,7 @@ const postModel = require('./src/model/PostModel');
 
 const express= require('express');
 const cors = require('cors');
+
 const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require ("bcryptjs");
@@ -52,7 +53,6 @@ app.get('/', (req, res) => {
 
 //Register API
 app.post('/register', async (req,res)=> {
-
         console.log('reached');
         const password= req.body.password;
         const confpassword= req.body.repeatPassword;
@@ -65,6 +65,13 @@ app.post('/register', async (req,res)=> {
                 repeatPassword : req.body.registerUserData.repeatPassword,
                  userType : req.body.registerUserData.userType
             })
+        //     const user= await userdata.save();
+        //     let payload={subject:user._id};
+        //     let token = jwt.sign(payload,'secretKey');
+        //     res.status(200).send({token});
+        // }else{
+        //     res.send("Password not matching");
+        // }
         const user= await userdata.save();
         res.status(201);
         console.log('registration successfull')
@@ -76,9 +83,9 @@ app.post('/register', async (req,res)=> {
 
 //Login API
 app.post('/login', async(req,res) => {
-
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
+        console.log(req.body);
         const user = await userModel.findOne({email:email});
         console.log(user);
         if(user==null){
@@ -199,7 +206,7 @@ app.get('/singleblog/:id',(req, res)=>{
 
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
-    console.log(req.body)
+    console.log("backend")
     id=req.body._id,
     category= req.body.category
     postModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
@@ -215,7 +222,7 @@ app.put('/admin/approve',(req,res)=>{
 app.delete('/admin/deny/:id',(req,res)=>{
    
     id = req.params.id;
-    postmodel.findByIdAndDelete({"_id":id})
+    postModel.findByIdAndDelete({"_id":id})
     .then(()=>{
         console.log('success')
         res.send();
