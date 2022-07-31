@@ -11,12 +11,13 @@ const bcrypt = require ("bcryptjs");
 const req = require('express/lib/request');
 const posts = require('./src/model/PostModel');
 const app = new express();
+// const multer = require('multer');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
- 
+
 //For test purpose
 app.get('/', (req, res) => {
     res.send({
@@ -32,19 +33,22 @@ app.get('/', (req, res) => {
 //         return res.status(401).send('Unauthorized request')
 //     }
 //     let token = req.headers.authorization.split('')[1]
-//     if (token =='null')
-//     {
-//         return res.status(401).send('Unauthorized request')
-//     }
-//     let payload= jwt.verify(token,'secretkey')
-//     console.log(payload)
-//     if(!payload)
-//     {
-//         return res.status(401).send('Unauthorized request')
-//     }
-//     req.userId=payload.subject
-//     next()
-// }
+//     console.log(token)
+    // if (token =='null')
+    // {
+    //     return res.status(401).send('Unauthorized request')
+    // }
+    
+    // let payload= jwt.verify(token,'secretkey')
+
+    // console.log(payload)
+    // if(!payload)
+    // {
+    //     return res.status(401).send('Unauthorized request')
+    // }
+    // req.userId=payload.subject
+   // next()
+//}
 
 
 //Register API
@@ -58,8 +62,8 @@ app.post('/register', async (req,res)=> {
                 email : req.body.registerUserData.email,
                 phoneNo: req.body.registerUserData.phoneNo,
                 password : req.body.registerUserData.password,
-                repeatPassword : req.body.registerUserData.repeatPassword
-                //userType : req.body.userType
+                repeatPassword : req.body.registerUserData.repeatPassword,
+                 userType : req.body.registerUserData.userType
             })
         //     const user= await userdata.save();
         //     let payload={subject:user._id};
@@ -70,7 +74,7 @@ app.post('/register', async (req,res)=> {
         // }
         const user= await userdata.save();
         res.status(201);
-        console.log('registration succefull')
+        console.log('registration successfull')
         }else{
             res.send("Password not matching");
         }  
@@ -86,8 +90,29 @@ app.post('/login', async(req,res) => {
         console.log(user);
         if(user==null){
             console.log('user not found')
+            res.status(401).send('user not found')
         }
-        else{
+         else{
+            const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch){
+            let payload = {subject: email+password}
+            
+            let token = jwt.sign(payload, 'secretKey')
+            
+            res.status(200).send({token})
+            console.log("key value matches");
+        }else {
+            res.status(401).send("Invalid credentials");
+        }    
+    }});
+
+    //admin login
+      app.post('/admin/login', async(req,res) => {
+        const email = req.body.loginUserData.email;
+        const password = req.body.loginUserData.password;
+        console.log(req.body);
+        const user = await userModel.findOne({email:email});
+        console.log(user);
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch){
             let payload = {subject: email+password}
@@ -95,10 +120,11 @@ app.post('/login', async(req,res) => {
             res.status(200).send({token})
             console.log("key value matches");
         }else {
-            res.send("Invalid credentials");
+            res.status(401).send("Invalid credentials");
         }    
-    }});
+    });
 
+    
 
 //create post
 app.post('/posts/savepost',function(req,res){
@@ -107,7 +133,8 @@ app.post('/posts/savepost',function(req,res){
         title : req.body.item.title,
         content : req.body.item.content,
         username : req.body.item.username,
-        category : "undefined"
+        category : "undefined",
+        imageUrl :  req.body.item.imageUrl
    }       
    const newpost = new postModel(post);
    newpost.save();
@@ -119,10 +146,10 @@ app.get('/admin/pending', function(req,res){
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     postModel.find({approved:false})
     .then(function(post){
-        console.log('All Approved Posts displayed');
+        console.log('All pending Posts displayed');
         res.send(post);
     })
-})
+}) 
 
 //To display all posts that are approved in home page
 app.get('/posts', function(req,res){
@@ -178,6 +205,17 @@ app.put('/admin/approve',(req,res)=>{
    })
 
 })
+
+//To delete the post data on rejection by admin
+app.delete('/admin/deny/:id',(req,res)=>{
+   
+    id = req.params.id;
+    postmodel.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+  })
 
 
 //Port setup
