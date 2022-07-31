@@ -194,7 +194,7 @@ app.get('/singleblog/:id',(req, res)=>{
 
 //To change approved value on approval by admin
 app.put('/admin/approve',(req,res)=>{
-    console.log(req.body)
+    console.log("backend")
     id=req.body._id,
     category= req.body.category
     postModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
@@ -210,7 +210,7 @@ app.put('/admin/approve',(req,res)=>{
 app.delete('/admin/deny/:id',(req,res)=>{
    
     id = req.params.id;
-    postmodel.findByIdAndDelete({"_id":id})
+    postModel.findByIdAndDelete({"_id":id})
     .then(()=>{
         console.log('success')
         res.send();

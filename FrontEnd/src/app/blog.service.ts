@@ -18,9 +18,20 @@ export class BlogService {
   }
 
   singleblog(id:any){
-    return this.http.get('http://localhost:3000/singleblog/'+id)
-    
-    
+    return this.http.get('http://localhost:3000/singleblog/'+id);
   }
+
+  updateCategory(i:any){
+    console.log("Blog Service");
+    console.log(i);
+    return this.http.put('http://localhost:3000/admin/approve',i);
+  }
+  
+
+  deleteBlog(id:any)
+  {
+    return this.http.delete("http://localhost:3000/admin/deny/"+id)
+  }
+
 }
 

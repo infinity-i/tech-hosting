@@ -17,15 +17,15 @@
         
          <div class="button">
           <label>Category :</label>
-          <select id="filter">
+          <select id="filter" name="category"  [(ngModel)]="i.category">
            <option value="FrontEnd" name="category">Front End</option>
            <option value="BackEnd" name="category">Back End</option>
            <option value="DataBase" name="category">Database</option>
            <option value="Hosting" name="category">Hosting</option>
            <option value="Others" name="category">Others</option>
           </select>
-            <button id="acceptbtn" type="button" class="btn btn-success">Accept</button>
-            <button type="button"  class="btn btn-danger">Deny</button>
+            <button id="acceptbtn" type="button" class="btn btn-success" (click)="onAccept(i)">Accept</button>
+            <button type="button"  class="btn btn-danger" (click)= "Delete(i._id)">Deny</button>
            </div>
         </div>
 </div>
