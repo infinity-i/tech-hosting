@@ -151,6 +151,18 @@ app.get('/admin/pending', function(req,res){
     })
 }) 
 
+//Home page posts that sorted by the condition
+app.get('/admin/approved', function(req,res){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+    // postModel.find({approved:false}).sort({approved:-1})
+    postModel.find({}).sort({_id:-1}).limit(12)
+    .then(function(post){
+        console.log('All pending Posts displayed');
+        res.send(post);
+    })
+})
+
 //To display all posts that are approved in home page
 app.get('/posts', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
