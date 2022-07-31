@@ -55,19 +55,26 @@ form{
     background-color: rgb(255, 255, 255);
     display: grid;
     place-items: center;
+    /* transition: 2s; */
+
 }
 
 .addbody{
     width: 70%;
-    height: 100%;
+    min-height: 100%;
+    max-height: fit-content;
     margin-left: -60px;
     /* border: 1px solid rebeccapurple; */
     background-color: rgb(255, 255, 255);
     padding: 20px 0 0 185px ;
+
+    /* column-gap: 15px; */
 }
 
 .addbody label{
     margin-bottom: 10px;
+    margin-top: auto;
+    margin-top: auto;
 }
 
 .addbody input{
@@ -77,8 +84,10 @@ form{
     font-size: 13px;
     padding-left: 10px;
     outline: none;
+    /* margin-bottom: 15px; */
+    margin-top: 15px;
     border: none;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     border: .8px solid rgba(206, 206, 206, 0.689);
 }
 
@@ -90,6 +99,8 @@ form{
     font-size: 13px;
     border: none;
     border-radius: 10px;
+    margin-top: 15px;
+
     border: 1px solid rgba(206, 206, 206, 0.689);
 
 }
@@ -100,7 +111,7 @@ form{
     /* display: flex; */
     /* border: 1px solid blue; */
     text-align: center;
-    padding: 10px 10px;
+    padding: 0  0 55px 10px;
 }
 
 .btn1 button{
@@ -141,4 +152,13 @@ form{
     margin-left: 170px;
     padding-bottom: 15px;
     /* border-bottom: 1px solid gray; */
+}
+
+.small{
+    /* margin-top: -150px; */
+    margin-left: -15px;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    margin-bottom: 0;
+    /* transform: 2s; */
 }
