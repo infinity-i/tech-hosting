@@ -10,19 +10,20 @@
 
           
           <!-- <label for="title">Blog Title</label><br> -->
-          <input type="text" #title="ngModel"  name="title" minlength="10" 
+          <input type="text" #title="ngModel"  name="title" minlength="10" maxlength="80"
            placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" id="title" required>
            <br>
            <div *ngIf="title.invalid && title.touched">
              <small *ngIf="title.errors?.['required']" class="px-3 text-danger small">Title is required</small>
              <small class="px-3 text-danger small" *ngIf="title.errors?.['minlength']" >title shoud be minimum of 10 charecters</small> <br>
+             <!-- <small class="px-3 text-danger small" *ngIf="title.errors?.['maxlength']" >title shoud be maximum of 80 words </small> -->
              <!-- <small class="px-3 text-danger success" *ngIf="title.valid['minlength']" >title looks great</small> <br> -->
 
            </div>
 
 
           <!-- <label for="author">Author name</label><br> -->
-          <input type="text"   #blogauthor="ngModel" name="blogauthor" minlength="4" 
+          <input type="text"   #blogauthor="ngModel" name="blogauthor" minlength="4" maxlength="15"
           placeholder="blog author name"  [(ngModel)]="newBlog.username" required  id="">
           <br>
           <div *ngIf="blogauthor.invalid && blogauthor.touched">
@@ -37,13 +38,13 @@
 
 
           <!-- <label for="content">Blog content</label><br> -->
-          <textarea type="text" #blogcont="ngModel" name="blogcont" minlength="100" 
+          <textarea type="text" #blogcont="ngModel" name="blogcont" minlength="600"  
           id="" cols="30" rows="10" placeholder="write your blog content" required  name="blogcontent" 
           [(ngModel)]="newBlog.content"></textarea> 
           <br>
           <div *ngIf="blogcont.invalid && blogcont.touched">
             <small *ngIf="blogcont.errors?.['required']" class="px-3 text-danger small">Blog content is required</small>
-           <small class="px-3 text-danger small" *ngIf="blogcont.errors?.['minlength']" >blog content  shoud be minimum of 100 charecters</small> <br>
+           <small class="px-3 text-danger small" *ngIf="blogcont.errors?.['minlength']" >blog content  should be minimum of 100 words</small> <br>
           </div>
 
         </div>
