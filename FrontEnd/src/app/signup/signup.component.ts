@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     console.log(this.registerUserData);
      }
      
-  registerUserData = new AuthData('','','','','');
+  registerUserData = new AuthData('','','','','','');
      
   
   constructor(public auth:AuthService,public router:Router) { }
