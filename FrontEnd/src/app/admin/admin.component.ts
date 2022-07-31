@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   constructor(private blogService:BlogService, public router:Router) { }
 
   ngOnInit(): void {
-    this.blogService.getBlogs().subscribe((data) => {
+    this.blogService.approvedBlogs().subscribe((data) => {
       this.blogs = JSON.parse(JSON.stringify(data))
     })
   }

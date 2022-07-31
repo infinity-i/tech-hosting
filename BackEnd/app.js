@@ -208,8 +208,8 @@ app.get('/singleblog/:id',(req, res)=>{
 app.put('/admin/approve',(req,res)=>{
     console.log("backend")
     id=req.body._id,
-    category= req.body.category
-    postModel.findByIdAndUpdate({"_id":id},{$set:{"category":category,
+    
+    postModel.findByIdAndUpdate({"_id":id},{$set:{"category":req.body.category,
                                 "approved":true
                                 }})
    .then(function(){
