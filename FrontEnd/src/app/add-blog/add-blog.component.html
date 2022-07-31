@@ -1,37 +1,62 @@
 
 
   <div class="body">
-    <form  (ngSubmit)="AddBlog()" ngNativeValidate >
+    <form #addblog="ngForm"  (ngSubmit)="AddBlog()" ngNativeValidate >
 
       <div class="addblogC">
 
         <div class="addbody">
           <h1>Add your blog</h1>
-          <label for="title">Blog Title</label><br>
-          <input type="text"  placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" required  id=""><br>
 
-          <label for="title">Author name</label><br>
-          <input type="text"  placeholder="blog author name"  name="blogauthor" [(ngModel)]="newBlog.username" required  id=""><br>
+          
+          <!-- <label for="title">Blog Title</label><br> -->
+          <input type="text" #title="ngModel"  name="title" minlength="10" 
+           placeholder="write your blog title" name="Blogtitle" [(ngModel)]="newBlog.title" id="title" required>
+           <br>
+           <div *ngIf="title.invalid && title.touched">
+             <small *ngIf="title.errors?.['required']" class="px-3 text-danger small">Title is required</small>
+             <small class="px-3 text-danger small" *ngIf="title.errors?.['minlength']" >title shoud be minimum of 10 charecters</small> <br>
+             <!-- <small class="px-3 text-danger success" *ngIf="title.valid['minlength']" >title looks great</small> <br> -->
 
-          <label for="title">Blog image</label><br>
+           </div>
+
+
+          <!-- <label for="author">Author name</label><br> -->
+          <input type="text"   #blogauthor="ngModel" name="blogauthor" minlength="4" 
+          placeholder="blog author name"  [(ngModel)]="newBlog.username" required  id="">
+          <br>
+          <div *ngIf="blogauthor.invalid && blogauthor.touched">
+            <small *ngIf="blogauthor.errors?.['required']" class="px-3 text-danger small">Author name is required</small>
+           <small class="px-3 text-danger small" *ngIf="blogauthor.errors?.['minlength']" >Author name shoud be minimum of 4 charecters</small> <br>
+          </div>
+
+
+          <!-- <label for="image">Blog image</label><br> -->
           <input type="text" name="title" placeholder="blog image url"  id=""><br>
           <!-- <input type="text" name="blogimage" placeholder="blog image" [(ngModel)]="newBlog.image" id=""><br> -->
 
 
-          <label for="title">Blog content</label><br>
-          <!-- <input type="text" name="title" placeholder="write your blog content" id=""><br> -->
-          <textarea name="content" id="" cols="30" rows="10" placeholder="write your blog content" required  name="blogcontent" 
-          [(ngModel)]="newBlog.content"></textarea>
+          <!-- <label for="content">Blog content</label><br> -->
+          <textarea type="text" #blogcont="ngModel" name="blogcont" minlength="100" 
+          id="" cols="30" rows="10" placeholder="write your blog content" required  name="blogcontent" 
+          [(ngModel)]="newBlog.content"></textarea> 
+          <br>
+          <div *ngIf="blogcont.invalid && blogcont.touched">
+            <small *ngIf="blogcont.errors?.['required']" class="px-3 text-danger small">Blog content is required</small>
+           <small class="px-3 text-danger small" *ngIf="blogcont.errors?.['minlength']" >blog content  shoud be minimum of 100 charecters</small> <br>
+          </div>
+
         </div>
 
         <div class="btn1">
-          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px ;" >Submit</button> 
+          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px;" [disabled]="addblog.form.invalid" >Submit</button> 
           <button  id="btncancel" type="button" class="btn btn-light" onclick="history.back()" >Cancel</button>
         </div>
 
 
-
-      </div>
+        </div>
+      <!-- </div> -->
+      <!-- </div> -->
     </form>
 
   </div>
