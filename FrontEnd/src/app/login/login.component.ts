@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import {NgToastService} from 'ng-angular-popup'
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(public auth:AuthService,public router: Router) { }
+  constructor(private toast:NgToastService, public auth:AuthService,public router: Router) { }
   
   
    loginUserData = {email:'', password:''};
@@ -55,7 +57,8 @@ onlogin() {
             this.router.navigate(['/home'])
           },
           (     err: any) => {
-            console.log(err);
+            console.log(err)
+           this.toast.error({detail:"login failed",summary:'invalid login credentials',duration:5000});
             this.router.navigate(['login'])
           });
     }  

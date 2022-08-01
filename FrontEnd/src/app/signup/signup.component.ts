@@ -3,6 +3,8 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthData } from './auth-data.model';
+import {NgToastService} from 'ng-angular-popup'
+
 
 @Component({
   selector: 'app-signup',
@@ -19,16 +21,18 @@ export class SignupComponent implements OnInit {
   registerUserData = new AuthData('','','','','','');
      
   
-  constructor(public auth:AuthService,public router:Router) { }
+  constructor(private toast:NgToastService, public auth:AuthService,public router:Router) { }
   
     
     ngOnInit(): void {
       
   }
   onSubmit(){
-    alert("Succesfully registered");
+    // alert("Succesfully registered");
     this.auth.registerUser(this.registerUserData);
     console.log("auth service called");
+    this.toast.success({detail:"SUCCESS",summary:'Signup successfull',duration:5000});
+
     // .subscribe(
     //   (      res: { token: string; }) => {
     //     console.log(res)
