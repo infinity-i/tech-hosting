@@ -18,7 +18,7 @@ export class BlogsComponent implements OnInit {
   constructor(private blogService:BlogService, private router:Router) { }
 
   ngOnInit(): void {
-    this.blogService.getBlogs().subscribe((data) => {
+    this.blogService.getapprovedBlogs().subscribe((data) => {
       this.blogs = JSON.parse(JSON.stringify(data));
     })
   }
