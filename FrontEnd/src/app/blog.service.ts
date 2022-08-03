@@ -21,6 +21,10 @@ export class BlogService {
     return this.http.get('http://localhost:3000/admin/approved');
   }
 
+  getapprovedBloglatest(){
+    return this.http.get('http://localhost:3000/admin/approved/latest');
+  }
+
   approvedBlogs(){
     return this.http.get('http://localhost:3000/posts');
   } 

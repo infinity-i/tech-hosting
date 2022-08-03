@@ -15,11 +15,17 @@ export class BlogsComponent implements OnInit {
 
   blogs:BlogModel[] | any;
 
+  latestlog:BlogModel[];
+
   constructor(private blogService:BlogService, private router:Router) { }
 
   ngOnInit(): void {
     this.blogService.getapprovedBlogs().subscribe((data) => {
       this.blogs = JSON.parse(JSON.stringify(data));
+    })
+
+    this.blogService.getapprovedBloglatest().subscribe((data)=>{
+      this.latestlog = JSON.parse(JSON.stringify(data));
     })
   }
 
