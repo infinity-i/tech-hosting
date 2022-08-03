@@ -19,12 +19,14 @@ export class PendingComponent implements OnInit {
   }
   onAccept(i:any){
     this.blogService.updateCategory(i);   
+    window.location.reload()
   }
 
   Delete(id:any){
     this.blogService.deleteBlog(id)
       .subscribe((data) => {
         this.blogs = this.blogs.filter(p => p !== this.blogs);
+        window.location.reload()
       })
   
   }

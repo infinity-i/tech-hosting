@@ -104,7 +104,7 @@ app.post('/login', async(req,res) => {
         }else {
             res.status(401).send("Invalid credentials");
         }    
-    }});
+    }}); 
 
     //admin login
       app.post('/admin/login', async(req,res) => {
