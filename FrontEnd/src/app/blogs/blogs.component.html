@@ -35,16 +35,24 @@
   <div class="latest">
 
     <h2>Latest News</h2>
-    <div id="post1" class="allblog" >
+    <div id="post1" class="allblog" *ngFor="let i of latestlog" (click)="showblog(i)">
 
       <div class="img">
-        <img src="../../assets/images/post1.jpg" alt="">
+        <!-- <img src="../../assets/images/post1.jpg" alt=""> -->
+        <img [src]="i.imageUrl" alt="">
+
+        
       </div>
       <div class="txt">
         <div class="heading">
-          <h1>How ICT Accademy is empowering the generation to build <br> their future</h1>  
+          <!-- <h1>How ICT Accademy is empowering the generation to build <br> their future</h1>   -->
+          <h1>{{i.title}}</h1>  
+
+
         </div>
-        <div class="date"><p>July 24,2022 </p></div>
+        <!-- <div class="date"><p>July 24,2022 </p></div> -->
+        <div class="date"><p>{{i.createdttm}} </p></div>
+
 
       </div>
         
@@ -88,6 +96,8 @@
     </div>    
   </div>
 
+  <div class="line"></div>
+
 
 
   <!-- <div class="daytoday" *ngFor="let i of blogs">
@@ -105,7 +115,7 @@
 
   <!-- <div class="daytoday" > -->
  
-    <section id="sample" class="">
+    <!-- <section id="sample" class=""> -->
       <!-- <app-header></app-header> -->
       <!-- <img src="../../assets/images/post7.jpg" alt="">  -->
       <!-- <h3 class="text-center py-4">BOOKS</h3> -->
@@ -126,7 +136,7 @@
 
         </div>
       </div>
-      </section>
+    <!-- </section> -->
     
 
   <!-- </div> -->
