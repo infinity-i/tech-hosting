@@ -41,6 +41,5 @@ input[type="checkbox"] {
   button{
     /* padding: 30px; */
     width: 80px;
-    align-items: center;
-    /* float: right; */
+    margin-left: 400px;
   }
