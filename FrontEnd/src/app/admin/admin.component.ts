@@ -18,4 +18,12 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  Delete(id:any){
+    this.blogService.deleteBlog(id)
+      .subscribe((data) => {
+        this.blogs = this.blogs.filter(p => p !== this.blogs);
+      })
+  
+  }
+
 }

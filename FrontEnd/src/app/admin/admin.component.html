@@ -18,6 +18,7 @@
                     <div class="card text-center p-4">
                       <i class="bi bi-code-slash"></i>
                         <div class="card-body">
+                         <div class="imgContainer"><img [src]="i.imageUrl" alt=""></div>
                           <h5 class="card-title">{{i.title}}</h5>
                           <h6 class="card-title">{{i.username}}</h6>
                         <input type="checkbox" id={{i._id}} />
@@ -28,6 +29,7 @@
                         </div>
 
                         <label for={{i._id}} >Read </label>
+                        <button type="button" id="button" class="btn btn-danger" (click)= "Delete(i._id)">Delete</button>
 
                        </div>
                 </div>

@@ -14,7 +14,8 @@
          <h3 class="bname">{{i.title}}</h3>    
          <p>{{i.content}}</p>
          <h4>-{{i.username}}</h4>
-        
+         <div class="imgContainer"><img [src]="i.imageUrl" alt=""></div>
+
          <div class="button">
           <label>Category :</label>
           <select id="filter" name="category"  [(ngModel)]="i.category">
