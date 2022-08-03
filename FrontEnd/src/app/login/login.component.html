@@ -9,13 +9,15 @@
           <span></span>
           <label>Email</label>
           <label class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">Email required</label>
+          <label class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">Email Invalid</label>          
         </div>
 
         <div class="txt_field">
-          <input type="password" name="password" #password="ngModel" [(ngModel)]="loginUserData.password" required>
+          <input type="password" minlength="4" name="password" #password="ngModel" [(ngModel)]="loginUserData.password" required>
           <span></span>
           <label>Password</label><br>
           <label class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">Password required</label>
+          <label class="text-danger" *ngIf="form.submitted&&password.errors?.['minlength']">Password Invalid</label>
         </div>
 
         <input type="submit" value="Login">
