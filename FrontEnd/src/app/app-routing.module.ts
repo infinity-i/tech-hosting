@@ -38,7 +38,8 @@ const routes: Routes = [{path:'',component:WelcomeComponent},
 
   ]},
   {path:'admin',component:AdminComponent},
-  {path:'pending',component:PendingComponent}];
+  {path:'pending',component:PendingComponent},
+  {path:'adminadd',component:AddBlogComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
