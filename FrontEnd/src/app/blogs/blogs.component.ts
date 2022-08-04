@@ -17,6 +17,8 @@ export class BlogsComponent implements OnInit {
 
   latestlog:BlogModel[];
 
+  latestlog2:BlogModel[];
+
   _filtervalue: string = '';
 
   filterblog: BlogModel[];
@@ -41,6 +43,10 @@ export class BlogsComponent implements OnInit {
 
     this.blogService.getapprovedBloglatest().subscribe((data)=>{
       this.latestlog = JSON.parse(JSON.stringify(data));
+    })
+
+    this.blogService.getapprovedBloglatest2().subscribe((data)=>{
+      this.latestlog2 = JSON.parse(JSON.stringify(data));
     })
   }
 
