@@ -21,8 +21,25 @@ export class AddBlogComponent implements OnInit {
       // alert('success')
       this.blogService.newBlogs(this.newBlog);
       this.toast.success({detail:"SUCCESS",summary:'Blog will publish when admin approved it',duration:6000});
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
+      this.routing()
     // }
+
+  }
+
+  routing(){
+
+    let adminid = localStorage.getItem('admin');
+    if(adminid == "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" ){
+
+      this.router.navigate(['/admin']);
+    } else{
+
+      this.router.navigate(['/home']);
+
+    }
+
+    
 
   }
 }

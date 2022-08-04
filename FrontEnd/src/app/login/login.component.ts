@@ -44,6 +44,8 @@ onlogin() {
       this.auth.adminLogin(this.loginUserData)
       .subscribe(res => {
           localStorage.setItem('token', res.token)
+          localStorage.setItem('admin', "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")
+
           this.router.navigate(['/admin'])
         },
         (     err: any) => {
@@ -55,6 +57,7 @@ onlogin() {
       this.auth.loginUser(this.loginUserData)
         .subscribe(res => {
             localStorage.setItem('token', res.token)
+            localStorage.removeItem('admin')
             this.router.navigate(['/home'])
           },
           (     err: any) => {
