@@ -158,7 +158,7 @@ app.get('/admin/approved', function(req,res){
     // postModel.find({approved:false}).sort({approved:-1})
     postModel.find({approved:true}).sort({_id:-1}).limit(12).skip(3)
     .then(function(post){
-        console.log('All pending Posts displayed');
+        console.log('blogs displayed in normal container');
         res.send(post);
     })
 })
@@ -170,7 +170,7 @@ app.get('/admin/approved/latest', function(req,res){
     // postModel.find({approved:false}).sort({approved:-1})
     postModel.find({approved:true}).sort({_id:-1}).limit(1)
     .then(function(post){
-        console.log('All pending Posts displayed');
+        console.log('blogs displayed in latest part2');
         res.send(post);
     })
 })
@@ -182,7 +182,7 @@ app.get('/admin/approved/latest2', function(req,res){
     // postModel.find({approved:false}).sort({approved:-1})
     postModel.find({approved:true}).sort({_id:-1}).limit(2).skip(1)
     .then(function(post){
-        console.log('All pending Posts displayed');
+        console.log('blogs displayed in latest part');
         res.send(post);
     })
 })
