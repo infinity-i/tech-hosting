@@ -156,7 +156,7 @@ app.get('/admin/approved', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     // postModel.find({approved:false}).sort({approved:-1})
-    postModel.find({approved:true}).sort({_id:-1}).limit(12).skip(3)
+    postModel.find({approved:true}).sort({_id:-1})
     .then(function(post){
         console.log('All pending Posts displayed');
         res.send(post);

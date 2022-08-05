@@ -109,7 +109,7 @@
 
 
       <div class="container d-flex flex-wrap " id="blogcontainer">
-        <div class="box allblog"  *ngFor="let i of filterblog" (click)="showblog(i)">
+        <div class="box allblog"  *ngFor="let i of normalblog" (click)="showblog(i)">
           <div class="boxbody">
             <!-- <div class="imgContainer"> <img src="../../assets/images/post7.jpg" alt="">  </div> -->
             <div class="imgContainer"> <img [src]="i.imageUrl" alt="">  </div>

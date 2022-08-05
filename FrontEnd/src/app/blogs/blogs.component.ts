@@ -23,16 +23,22 @@ export class BlogsComponent implements OnInit {
 
   filterblog: BlogModel[];
 
+  normalblog: BlogModel[];
+
+  
+
 
 
   get filtervalue(){
     return this._filtervalue;
-    
   }
 
   set filtervalue(value:string){
     this._filtervalue = value;
     this.filterblog = this.filterBlogByCat(value);
+    this.latestlog = this.filterblog.slice(0, 1);
+    this.latestlog2 = this.filterblog.slice(1, 3);
+    this.normalblog = this.filterblog.slice(3, 15);
 
 
   }
@@ -43,7 +49,9 @@ export class BlogsComponent implements OnInit {
     this.blogService.getapprovedBlogs().subscribe((data) => {
       this.blogs = JSON.parse(JSON.stringify(data));
       this.filterblog = this.blogs;
-      this.latestlog = this.filterblog.slice(10);
+      this.latestlog = this.filterblog.slice(0, 1);
+      this.latestlog2 = this.filterblog.slice(1, 3);
+      this.normalblog = this.filterblog.slice(3, 15);
 
     })
 
@@ -52,9 +60,9 @@ export class BlogsComponent implements OnInit {
     //   this.latestlog = JSON.parse(JSON.stringify(data));
     // })
 
-    this.blogService.getapprovedBloglatest2().subscribe((data)=>{
-      this.latestlog2 = JSON.parse(JSON.stringify(data));
-    })
+    // this.blogService.getapprovedBloglatest2().subscribe((data)=>{
+    //   this.latestlog2 = JSON.parse(JSON.stringify(data));
+    // })
   }
 
   showblog(i:any){
