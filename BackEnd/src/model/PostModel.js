@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 });
 
 const postSchema = new mongoose.Schema({
-    title: { type: String,required:true,unique:true },
+    title: { type: String,required:true,unique:false },
     content: { type: String,required:true},
     username: { type: String, required:true },
     category: { type: String },
