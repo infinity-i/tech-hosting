@@ -17,14 +17,18 @@
         </div>
         <!-- <label for="">popular topics</label> -->
           <!-- <a href="">Add blog</a> -->
-          <select name="category" id="cat" [(ngModel)]="filtervalue">
-            <option value="" >Category</option>
-            <option value="" >ALL</option>
-            <option value="FSD">FSD</option>
-            <option value="BackEnd"  >BackEnd</option>
-            <option value="DataBase">DataBase</option>
+
+        <div class="dropdown">
+          <select name="category" id="cat" [(ngModel)]="filtervalue"> <h1>category</h1>
+            <option value="" disabled>Category</option>
+            <option value="">ALL</option>
+            <option value="Technology">Technology</option>
+            <option value="Events">Events</option>
+            <option value="Paatashala">Paatashala</option>
+            <option value="Career">Career</option>
             <option value="Others">Others</option>
           </select>
+        </div>
   
       </div>
   </div>
