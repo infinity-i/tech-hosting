@@ -14,7 +14,8 @@
             <div class="blogimage">
 
                 <!-- <img src="../../assets/images/sample.jfif" alt=""> -->
-                <img [src]="blogdata.imageUrl" alt="">
+                <!-- <img [src]="blogdata.imageUrl" alt=""> -->
+                <img src="{{'data:image/jpg;base64,' + blogdata.imageUrl}}" alt="">
 
 
             </div>
