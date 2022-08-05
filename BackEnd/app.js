@@ -144,7 +144,7 @@ app.post('/posts/savepost',function(req,res){
 app.get('/admin/pending', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
-    postModel.find({approved:false})
+    postModel.find({approved:false}).sort({_id:-1})
     .then(function(post){
         console.log('All pending Posts displayed');
         res.send(post);
