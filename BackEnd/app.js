@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
 
 
 //Register API
-app.post('/register', async (req,res)=> {
+app.post('/api/register', async (req,res)=> {
         console.log('reached');
         const password= req.body.password;
         const confpassword= req.body.repeatPassword;
@@ -82,7 +82,7 @@ app.post('/register', async (req,res)=> {
 })
 
 //Login API
-app.post('/login', async(req,res) => {
+app.post('/api/login', async(req,res) => {
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         console.log(req.body);
@@ -107,7 +107,7 @@ app.post('/login', async(req,res) => {
     }}); 
 
     //admin login
-      app.post('/admin/login', async(req,res) => {
+      app.post('/api/admin/login', async(req,res) => {
         const email = req.body.loginUserData.email;
         const password = req.body.loginUserData.password;
         console.log(req.body);
@@ -127,7 +127,7 @@ app.post('/login', async(req,res) => {
     
 
 //create post
-app.post('/posts/savepost',function(req,res){
+app.post('/api/posts/savepost',function(req,res){
    console.log(req.body);
    const post = {       
         title : req.body.item.title,
@@ -141,7 +141,7 @@ app.post('/posts/savepost',function(req,res){
 });
 
 //Posts pending approval in admin page
-app.get('/admin/pending', function(req,res){
+app.get('/api/admin/pending', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     postModel.find({approved:false}).sort({_id:-1})
@@ -152,7 +152,7 @@ app.get('/admin/pending', function(req,res){
 }) 
 
 //Home page posts that sorted by the condition
-app.get('/admin/approved', function(req,res){
+app.get('/api/admin/approved', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     // postModel.find({approved:false}).sort({approved:-1})
@@ -164,7 +164,7 @@ app.get('/admin/approved', function(req,res){
 })
 
 //Home page posts that taking the latest one
-app.get('/admin/approved/latest', function(req,res){
+app.get('/api/admin/approved/latest', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     // postModel.find({approved:false}).sort({approved:-1})
@@ -176,7 +176,7 @@ app.get('/admin/approved/latest', function(req,res){
 })
 
 //Home page posts that taking the latest one
-app.get('/admin/approved/latest2', function(req,res){
+app.get('/api/admin/approved/latest2', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     // postModel.find({approved:false}).sort({approved:-1})
@@ -188,7 +188,7 @@ app.get('/admin/approved/latest2', function(req,res){
 })
 
 //To display all posts that are approved in home page
-app.get('/posts', function(req,res){
+app.get('/api/posts', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     postModel.find({approved:true}).sort({_id:-1})
@@ -199,7 +199,7 @@ app.get('/posts', function(req,res){
 })
 
 //To display posts based on categories
-app.get('/posts/category/:category',  (req, res) => {
+app.get('/api/posts/category/:category',  (req, res) => {
     const id = req.params.id;
     postModel.find({"category":category})
       .then((posts)=>{
@@ -217,7 +217,7 @@ app.get('/posts/category/:category',  (req, res) => {
 //                 res.send();
 //             })
 // })
-app.get('/singleblog/:id',(req, res)=>{
+app.get('/api/singleblog/:id',(req, res)=>{
     const id = req.params.id;
     postModel.findOne({'_id':id})
     .then((i)=>{
@@ -229,7 +229,7 @@ app.get('/singleblog/:id',(req, res)=>{
 })
 
 //To change approved value on approval by admin
-app.put('/admin/approve',(req,res)=>{
+app.put('/api/admin/approve',(req,res)=>{
     console.log("backend")
     id=req.body._id,
     
@@ -243,7 +243,7 @@ app.put('/admin/approve',(req,res)=>{
 })
 
 //To delete the post data on rejection by admin
-app.delete('/admin/deny/:id',(req,res)=>{
+app.delete('/api/admin/deny/:id',(req,res)=>{
    
     id = req.params.id;
     postModel.findByIdAndDelete({"_id":id})
