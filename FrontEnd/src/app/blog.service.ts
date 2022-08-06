@@ -11,7 +11,7 @@ export class BlogService {
   constructor(public http:HttpClient) { }
 
   newBlogs(item:any){
-    return this.http.post(`${this.server_address}/savepost`,{ item })
+    return this.http.post(`${this.server_address}/posts/savepost`,{ item })
     .subscribe((data)=>console.log(data));
   }
 
