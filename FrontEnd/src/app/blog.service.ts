@@ -42,7 +42,8 @@ export class BlogService {
   updateCategory(i:any){
     console.log("Blog Service");
     console.log(i);
-    return this.http.put(`${this.server_address}/admin/approve`,i).subscribe((data)=>console.log(data));
+    return this.http.put(`${this.server_address}/admin/approve`,i)
+    .subscribe((data)=>console.log(data));
   }
   
 
