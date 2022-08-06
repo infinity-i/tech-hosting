@@ -13,6 +13,8 @@ export class AddBlogComponent implements OnInit {
   newBlog = new BlogModel("","","","","","","");
   dataimage: string;
   cardImageBase64:string ='';
+  message: string;
+  flag:boolean =true;
   constructor(private toast:NgToastService, public blogService: BlogService, public router:Router) { }
 
   ngOnInit(): void {
@@ -45,6 +47,13 @@ export class AddBlogComponent implements OnInit {
     if(!event.target.files[0] || event.target.files[0].length === 0){
       return
     }
+    var size = event.target.files[0].size;
+    if(size>75000){
+      this.flag=false;
+      this.message="Max file size should be 75 Kb";
+    }else{
+      this.message="";
+      this.flag=true;
     let mimeType=event.target.files[0].type;
     if(mimeType.match(/image\/*/) == null){
       return
@@ -57,4 +66,5 @@ export class AddBlogComponent implements OnInit {
     }
     reader.readAsDataURL(event.target.files[0]);
   }
+}
 }
