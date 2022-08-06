@@ -358,8 +358,10 @@
     width: 100%;
     height: fit-content;
     /* border: 1px solid red; */
-    display: inline-flex;
-    align-content: center;
+    /* display: inline-flex; */
+    /* align-content: center; */
+    display: flex;
+    place-content: center;
     column-gap: 43px;
 
 }
