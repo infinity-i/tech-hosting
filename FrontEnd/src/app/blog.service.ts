@@ -6,47 +6,49 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BlogService {
 
+  server_address: string = 'api' ;
+
   constructor(public http:HttpClient) { }
 
   newBlogs(item:any){
-    return this.http.post('http://localhost:3000/posts/savepost', { item })
+    return this.http.post(`${this.server_address}/savepost`,{ item })
     .subscribe((data)=>console.log(data));
   }
 
   getBlogs(){
-    return this.http.get('http://localhost:3000/admin/pending');
+    return this.http.get(`${this.server_address}/admin/pending`);
   }
 
   getapprovedBlogs(){
-    return this.http.get('http://localhost:3000/admin/approved');
+    return this.http.get(`${this.server_address}/admin/approved`);
   }
 
   getapprovedBloglatest(){
-    return this.http.get('http://localhost:3000/admin/approved/latest');
+    return this.http.get(`${this.server_address}/admin/approved/latest`);
   }
 
   getapprovedBloglatest2(){
-    return this.http.get('http://localhost:3000/admin/approved/latest2');
+    return this.http.get(`${this.server_address}/admin/approved/latest2`);
   }
 
   approvedBlogs(){
-    return this.http.get('http://localhost:3000/posts');
+    return this.http.get(`${this.server_address}/posts`);
   } 
 
   singleblog(id:any){
-    return this.http.get('http://localhost:3000/singleblog/'+id);
+    return this.http.get(`${this.server_address}/singleblog/`+id);
   }
 
   updateCategory(i:any){
     console.log("Blog Service");
     console.log(i);
-    return this.http.put('http://localhost:3000/admin/approve',i).subscribe((data)=>console.log(data));
+    return this.http.put(`${this.server_address}/admin/approve`,i).subscribe((data)=>console.log(data));
   }
   
 
   deleteBlog(id:any)
   {
-    return this.http.delete("http://localhost:3000/admin/deny/"+id)
+    return this.http.delete(`${this.server_address}/admin/deny/`+id)
   }
 
 }
