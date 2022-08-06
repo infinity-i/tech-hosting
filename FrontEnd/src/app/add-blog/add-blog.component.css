@@ -162,3 +162,7 @@ form{
     margin-bottom: 0;
     /* transform: 2s; */
 }
+
+.img-space{
+    margin: 15px 0 0 18px;
+}
