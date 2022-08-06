@@ -13,6 +13,10 @@ export class AddBlogComponent implements OnInit {
   newBlog = new BlogModel("","","","","","","");
   dataimage: string;
   cardImageBase64:string ='';
+  message: string;
+
+  imageupload = '';
+  // flag:boolean =true;
   constructor(private toast:NgToastService, public blogService: BlogService, public router:Router) { }
 
   ngOnInit(): void {
@@ -45,16 +49,31 @@ export class AddBlogComponent implements OnInit {
     if(!event.target.files[0] || event.target.files[0].length === 0){
       return
     }
+    var size = event.target.files[0].size;
+    if(size>75000){
+      // this.flag=false;
+    this.imageupload = '';
+
+      this.message="Max file size should be 70 Kb";
+    }else{
+
+      this.message="";
+      // this.flag=true;
     let mimeType=event.target.files[0].type;
     if(mimeType.match(/image\/*/) == null){
       return
+
     }
     let reader=new FileReader();
     reader.onload=()=>{
       this.dataimage = reader.result as string;
       this.cardImageBase64 = this.dataimage;
-      console.log(this.dataimage) 
+      this.imageupload = 'uploaded';
+
+      console.log(this.dataimage)
+
     }
     reader.readAsDataURL(event.target.files[0]);
   }
+}
 }

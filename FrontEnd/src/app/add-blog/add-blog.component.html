@@ -37,7 +37,8 @@
           <!-- <input type="text" class="form-control" name="blogimage" id="formFile" placeholder="blog image" [(ngModel)]="newBlog.imageUrl" id=""><br> -->
           <!-- <div class="mb-2"> -->
             <!-- <label for="formFile" class="form-label">Default file input example</label> -->
-            <input class="form-control form-control-lg" type="file" id="formFileLg" (change)="onFileSelect($event)" accept="image/*">
+            <input class="form-control form-control-lg" type="file" id="formFileLg" (change)="onFileSelect($event)" accept="image/*" required>
+            <small class="text-danger">{{message}}</small>
             <div class="img-space" >
                 <img [src]="cardImageBase64" style="width: 500px;height:200px;" />
             </div>
@@ -57,7 +58,7 @@
         </div>
 
         <div class="btn1">
-          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px;" [disabled]="addblog.form.invalid" >Submit</button> 
+          <button id="btnsubmit" type="submit" class="btn btn-light" style="margin-right:30px;" [disabled]="addblog.form.invalid || imageupload===''" >Submit</button> 
           <button  id="btncancel" type="button" class="btn btn-light" onclick="history.back()" >Cancel</button>
         </div>
 
