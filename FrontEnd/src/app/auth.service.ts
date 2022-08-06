@@ -6,20 +6,21 @@ import {HttpClient,HttpResponse} from '@angular/common/http';
 })
 export class AuthService {
 
+  server_address: string = 'api' ;   
 
   constructor(public http: HttpClient) { }
 
 registerUser(registerUserData: any) {
   console.log("auth file executed");
-  return this.http.post('http://localhost:3000/register',{ registerUserData }).subscribe(data =>{console.log(data)});
+  return this.http.post(`${this.server_address}/register`,{ registerUserData }).subscribe(data =>{console.log(data)});
 }
 
 loginUser(loginUserData: any) {
-  return this.http.post<any>('http://localhost:3000/login',{loginUserData});
+  return this.http.post<any>(`${this.server_address}/login`,{loginUserData});
 }
 
 adminLogin(loginUserData: any) {
-  return this.http.post<any>('http://localhost:3000/admin/login',{loginUserData});
+  return this.http.post<any>(`${this.server_address}/admin/login`,{loginUserData});
 }
 
 getToken() {
