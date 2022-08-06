@@ -37,7 +37,10 @@
           <!-- <input type="text" class="form-control" name="blogimage" id="formFile" placeholder="blog image" [(ngModel)]="newBlog.imageUrl" id=""><br> -->
           <!-- <div class="mb-2"> -->
             <!-- <label for="formFile" class="form-label">Default file input example</label> -->
-            <input class="form-control form-control-lg" type="file" id="formFileLg">
+            <input class="form-control form-control-lg" type="file" id="formFileLg" (change)="onFileSelect($event)" accept="image/*">
+            <div class="img-space" >
+                <img [src]="cardImageBase64" style="width: 500px;height:200px;" />
+            </div>
           <!-- </div> -->
 
 

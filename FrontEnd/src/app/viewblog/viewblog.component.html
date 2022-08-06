@@ -14,7 +14,8 @@
             <div class="blogimage">
 
                 <!-- <img src="../../assets/images/sample.jfif" alt=""> -->
-                <img [src]="blogdata.imageUrl" alt="">
+                <!-- <img [src]="blogdata.imageUrl" alt=""> -->
+                <img src="{{'data:image/jpg;base64,' + blogdata.imageUrl}}" alt="">
 
 
             </div>
@@ -50,7 +51,7 @@
 
             <div class="blogdate">
                 <!-- <p>12.5.2022</p> -->
-                <p>🕔{{blogdata.createdttm}}</p>
+                <p>🕔{{blogdata.createdttm | date }}</p>
                 <!-- <img src="" alt=""> -->
             </div>
 
