@@ -18,12 +18,16 @@ app.use(express.urlencoded({extended:false}));
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
 
+const path = require('path');
+app.use(express.static('./dist/front-end'));
+
 //For test purpose
 app.get('/', (req, res) => {
     res.send({
       status: 'online'
     })
 });
+
 
 //Token Verification
 // function verifyToken(req,res,next)
@@ -259,4 +263,7 @@ app.listen(process.env.PORT,()=>{
     console.log(`Server up and running in ${process.env.PORT}`);
 });
 
+app.get('/*', function (req,res){
 
+    res.sendFile(path.join(__dirname + '/dist/front-end/index.html'));
+});
